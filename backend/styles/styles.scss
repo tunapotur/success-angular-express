@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+.page-wrapper {
+  @apply m-10;
+}
+
+.main-page-header {
+  @apply my-5;
+}
+
+.success-card {
+  @apply mb-5 w-96;
+
+  &--header {
+    @apply text-rose-700;
+  }
+
+  &--date {
+    @apply text-sm;
+  }
+
+  &--user-name {
+    @apply text-sm;
+  }
+
+  &--detail {
+    @apply p-4 text-justify indent-4;
+  }
+}

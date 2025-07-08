@@ -9,19 +9,19 @@
   }
 
   .page-wrapper {
-    @apply flex flex-col items-center border border-indigo-600 md:w-xl;
+    @apply flex flex-col items-center border border-indigo-600 sm:w-xl;
   }
 
   main {
-    @apply flex h-[calc(99.9vh-7rem)] flex-col overflow-auto;
+    @apply flex h-[calc(99.9vh-8rem)] flex-col overflow-auto;
   }
 
   .header {
     @apply flex h-[4rem] w-full flex-col items-center justify-center bg-indigo-500 text-gray-100;
   }
 
-  .footer {
-    @apply flex h-[3rem] w-full flex-col items-center justify-center bg-indigo-500 text-gray-100;
+  .dock {
+    @apply flex h-[4rem] w-full flex-col items-center justify-center bg-indigo-500 text-gray-100;
   }
 
   .success-card {

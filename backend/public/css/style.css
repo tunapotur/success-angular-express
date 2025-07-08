@@ -7,8 +7,12 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-indigo-500: oklch(58.5% 0.233 277.117);
+    --color-indigo-600: oklch(51.1% 0.262 276.966);
     --color-rose-700: oklch(51.4% 0.222 16.935);
+    --color-gray-100: oklch(96.7% 0.003 264.542);
     --spacing: 0.25rem;
+    --container-xl: 36rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --default-font-family: var(--font-sans);
@@ -210,31 +214,77 @@
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
 }
-.page-wrapper {
-  margin: calc(var(--spacing) * 10);
-}
-.main-page-header {
-  margin-block: calc(var(--spacing) * 5);
-}
-.success-card {
-  margin-bottom: calc(var(--spacing) * 5);
-  width: calc(var(--spacing) * 96);
-}
-.success-card--header {
-  color: var(--color-rose-700);
-}
-.success-card--date {
-  font-size: var(--text-sm);
-  line-height: var(--tw-leading, var(--text-sm--line-height));
-}
-.success-card--user-name {
-  font-size: var(--text-sm);
-  line-height: var(--tw-leading, var(--text-sm--line-height));
-}
-.success-card--detail {
-  padding: calc(var(--spacing) * 4);
-  text-align: justify;
-  text-indent: calc(var(--spacing) * 4);
+@layer components {
+  .layout {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-indigo-600);
+  }
+  @media (width >= 48rem) {
+    .page-wrapper {
+      width: var(--container-xl);
+    }
+  }
+  main {
+    display: flex;
+    height: calc(99.9vh - 7rem);
+    flex-direction: column;
+    overflow: auto;
+  }
+  .header {
+    display: flex;
+    height: 4rem;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-indigo-500);
+    color: var(--color-gray-100);
+  }
+  .footer {
+    display: flex;
+    height: 3rem;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-indigo-500);
+    color: var(--color-gray-100);
+  }
+  .success-card {
+    margin: calc(var(--spacing) * 2);
+    display: flex;
+    flex-direction: column;
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-indigo-600);
+  }
+  .success-card--header {
+    color: var(--color-rose-700);
+  }
+  .success-card--date {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .success-card--user-name {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .success-card--detail {
+    padding: calc(var(--spacing) * 4);
+    text-align: justify;
+    text-indent: calc(var(--spacing) * 4);
+  }
 }
 @property --tw-rotate-x {
   syntax: "*";
@@ -309,6 +359,11 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -330,6 +385,7 @@
       --tw-drop-shadow-color: initial;
       --tw-drop-shadow-alpha: 100%;
       --tw-drop-shadow-size: initial;
+      --tw-border-style: solid;
     }
   }
 }

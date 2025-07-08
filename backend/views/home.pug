@@ -1,14 +1,12 @@
 extends base
 
 block content
-  .page-wrapper
-    h1.main-page-header Home Page Contents
-    
-    
-    each success in success_list
-      //- h2= success.header
-      .success-card 
-        h2.success-card--header= success.header
-        p.success-card--date= moment(success.date).format("DD.MM.YYYY")
-        p.success-card--user-name= success.user.name
-        p.success-card--detail= success.detail
+  main    
+    .success-list
+      each success in success_list
+        //- h2= success.header
+        .success-card 
+          h2.success-card--header= success.header
+          p.success-card--date= moment(success.date).format("DD.MM.YYYY")
+          p.success-card--user-name= success.user.name
+          p.success-card--detail= success.detail

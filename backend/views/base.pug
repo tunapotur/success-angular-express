@@ -9,9 +9,14 @@ html
         title Success | #{title}
 
   body
-    // HEADER
-    include _header
+    .layout
+      .page-wrapper
+        // HEADER
+        include _header
 
-    // CONTENT
-    block content
-      h1 This is a placeholder heading
+        // CONTENT
+        block content
+          h1 This is a placeholder heading
+        
+        // FOOTER
+        include _footer

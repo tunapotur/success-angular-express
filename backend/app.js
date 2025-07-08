@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const expressMongoSanitize = require('@exortek/express-mongo-sanitize');
 const { xss } = require('express-xss-sanitizer');
 const hpp = require('hpp');
+const moment = require('moment');
 
 //Error management imports
 const AppError = require('./utils/appError');
@@ -19,6 +20,7 @@ const successRouter = require('./routes/successRouter');
 const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
+app.locals.moment = moment;
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));

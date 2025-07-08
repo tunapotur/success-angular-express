@@ -9,6 +9,6 @@ block content
       //- h2= success.header
       .success-card 
         h2.success-card--header= success.header
-        p.success-card--date= success.date
+        p.success-card--date= moment(success.date).format("DD.MM.YYYY")
         p.success-card--user-name= success.user.name
         p.success-card--detail= success.detail

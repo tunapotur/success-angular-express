@@ -1,0 +1,21 @@
+@layer components {
+  .success-card {
+    @apply m-2 flex flex-col border border-indigo-600;
+
+    &--header {
+      @apply text-rose-700;
+    }
+
+    &--date {
+      @apply text-sm;
+    }
+
+    &--user-name {
+      @apply text-sm;
+    }
+
+    &--detail {
+      @apply p-4 text-justify indent-4;
+    }
+  }
+}

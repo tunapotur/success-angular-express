@@ -16,6 +16,22 @@ exports.getMe = (req, res, next) => {
   next();
 };
 
+exports.getUserSimpleInfos = catchAsync(async (req, res, next) => {
+  let query = User.findById(req.params.id);
+
+  query.select('id name email');
+  const doc = await query;
+
+  if (!doc) {
+    return next(new AppError('No document found with that ID', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: doc,
+  });
+});
+
 exports.updateMe = catchAsync(async (req, res, next) => {
   // 1) Create error if user POSTs password data
   if (req.body.password || req.body.passwordConfirm) {
@@ -51,21 +67,6 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getUserSimpleInfos = catchAsync(async (req, res, next) => {
-  let query = User.findById(req.params.id);
-
-  query.select('id name email');
-  const doc = await query;
-
-  if (!doc) {
-    return next(new AppError('No document found with that ID', 404));
-  }
-
-  res.status(200).json({
-    status: 'success',
-    data: doc,
-  });
-});
 exports.getUserDetailInfos = factory.getOne(User);
 exports.getAllUsers = factory.getAll(User);
 

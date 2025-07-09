@@ -241,6 +241,8 @@
     flex-direction: column;
     overflow: auto;
   }
+}
+@layer components {
   .header {
     display: flex;
     height: 4rem;
@@ -251,6 +253,8 @@
     background-color: var(--color-indigo-500);
     color: var(--color-gray-100);
   }
+}
+@layer components {
   .dock {
     display: flex;
     height: 4rem;
@@ -261,6 +265,8 @@
     background-color: var(--color-indigo-500);
     color: var(--color-gray-100);
   }
+}
+@layer components {
   .success-card {
     margin: calc(var(--spacing) * 2);
     display: flex;

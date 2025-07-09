@@ -1,0 +1,5 @@
+@layer components {
+  .dock {
+    @apply flex h-[4rem] w-full flex-col items-center justify-center bg-indigo-500 text-gray-100;
+  }
+}

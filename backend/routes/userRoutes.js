@@ -5,7 +5,7 @@ const successRouter = require('../routes/successRouter');
 
 const router = express.Router();
 
-router.get('/:id', userController.getUserSimpleInfos);
+// router.get('/:id', userController.getUserSimpleInfos);
 router.use('/:userId/successList', successRouter);
 
 router.post('/signup', authController.signup);

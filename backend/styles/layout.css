@@ -4,10 +4,10 @@
   }
 
   .page-wrapper {
-    @apply flex flex-col items-center border border-indigo-600 sm:w-xl;
+    @apply flex flex-col items-center sm:w-xl;
   }
 
   main {
-    @apply flex h-[calc(99.9vh-8rem)] flex-col overflow-auto;
+    @apply flex h-[calc(99.9vh-10rem)] flex-col overflow-auto;
   }
 }

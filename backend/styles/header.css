@@ -1,5 +1,16 @@
 @layer components {
   .header {
-    @apply flex h-[4rem] w-full flex-col items-center justify-center bg-indigo-500 text-gray-100;
+    @apply flex h-[4rem] w-full flex-row items-center justify-between rounded-md bg-indigo-600/75 p-4 text-gray-100;
+  }
+
+  .header-logo {
+    @apply flex flex-row items-center justify-center;
+    &__img {
+      @apply size-12;
+    }
+
+    &__text {
+      @apply ml-1.5 text-lg;
+    }
   }
 }

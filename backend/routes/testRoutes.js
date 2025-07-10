@@ -1,17 +1,19 @@
 const express = require('express');
 const moment = require('moment');
 
+const authController = require('../controllers/authController');
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  const isLoggedIn = req.cookies.jwt ? true : false;
-
+const testFn = (req, res) => {
   res.status(200).json({
     title: 'Test Request',
     data: new Date().toLocaleString(),
     formatDate: moment(new Date()).format('D dddd MMMM YYYY HH:mm:ss'),
-    isLoggedIn,
+    user: res.locals.user,
   });
-});
+};
+
+router.get('/', authController.isLoggedIn, testFn);
 
 module.exports = router;

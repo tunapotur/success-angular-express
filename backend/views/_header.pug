@@ -1,2 +1,6 @@
 header.header
   h1 Header
+  if user
+    .user-info
+    p= user.name 
+    p= user.email

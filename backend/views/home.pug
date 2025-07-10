@@ -4,7 +4,6 @@ block content
   main    
     .success-list
       each success in success_list
-        //- h2= success.header
         .success-card 
           h2.success-card--header= success.header
           p.success-card--date= moment(success.date).format("DD.MM.YYYY")

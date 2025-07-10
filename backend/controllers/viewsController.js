@@ -2,7 +2,7 @@ const Success = require('./../models/successModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
-exports.getOverview = catchAsync(async (req, res, next) => {
+exports.homePageData = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
   const success_list = await Success.find();
 

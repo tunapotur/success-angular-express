@@ -18,7 +18,10 @@ mongoose
   .connect(DB, {
     dbName,
   })
-  .then(() => console.log('DB connection successful!'));
+  .then(() => console.log('DB connection successful!'))
+  .catch((err) => {
+    console.error('❌ MongoDB bağlantı hatası:', err);
+  });
 
 const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);

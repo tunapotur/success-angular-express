@@ -2,6 +2,20 @@ header.header
   .header-logo
     img.header-logo__img(src="img/goal.png")
     h1.header-logo__text SUCCESS
+  
+  .header-page-name= pageName
+  
   if user
-    .user-info
-    p= user.name
+    .header-user
+      h1.header-user__fullname
+        .header-user__name= user.name
+        .header-user__surname= user.surname
+        
+      svg.header-user__icon
+        use.icon(xlink:href="img/icons.svg#icon-user")
+  else
+    a(class="header-user" href="/login")
+      svg.header-user__icon
+        use.icon(xlink:href="img/icons.svg#icon-login")
+  
+

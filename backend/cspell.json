@@ -4,6 +4,6 @@
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [],
-  "ignoreWords": ["exortek"],
+  "ignoreWords": ["exortek", "dataurl", "jonasstyle"],
   "import": []
 }

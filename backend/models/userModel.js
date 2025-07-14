@@ -11,6 +11,12 @@ const userSchema = new Schema(
       trim: true,
       maxLength: 120,
     },
+    surname: {
+      type: String,
+      required: [true, 'Surname is required'],
+      trim: true,
+      maxLength: 120,
+    },
     email: {
       type: String,
       required: [true, 'Email is required'],

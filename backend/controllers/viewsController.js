@@ -12,6 +12,7 @@ exports.homePageData = catchAsync(async (req, res, next) => {
     title: 'Welcome Success',
     success_list,
     user: res.locals.user,
+    pageName: 'Home Page',
   });
 });
 

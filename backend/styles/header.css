@@ -1,9 +1,9 @@
 @layer components {
   .header {
-    @apply flex h-[4.5rem] w-full flex-row items-center justify-between rounded-md bg-indigo-600/75 fill-indigo-50 px-6 py-4 text-indigo-50;
+    @apply flex h-[4.5rem] w-full flex-row items-center justify-between rounded-md bg-linear-to-t from-indigo-600/75 to-sky-600/75 fill-indigo-50 px-6 py-4 text-indigo-50;
 
     &__logo {
-      @apply size-10;
+      @apply size-10 drop-shadow-xl;
     }
 
     &__text {

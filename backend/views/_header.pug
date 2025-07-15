@@ -1,10 +1,12 @@
 header.header
-  svg.header__logo
-    use(xlink:href="img/icons.svg#icon-goal-skeleton")
-  h1.header__text SUCCESS
+  a(href='/')
+    svg.header__logo
+      use(xlink:href="img/icons.svg#icon-goal-skeleton")
+  a(href='/')
+    h1.header__text SUCCESS
 
   if user
-    a(href="#")
+    a(href="/user")
       svg.header__icon 
         use(xlink:href="img/icons.svg#icon-user")
   

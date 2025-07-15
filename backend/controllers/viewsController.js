@@ -54,8 +54,9 @@ exports.getLoginForm = (req, res) => {
 };
 
 exports.getAccount = (req, res) => {
-  res.status(200).render('account', {
+  res.status(200).render('user', {
     title: 'Your account',
+    pageName: 'User account',
   });
 };
 

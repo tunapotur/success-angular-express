@@ -4,8 +4,11 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
+//SSR
 router.get('/', authController.isLoggedIn, viewsController.homePageData);
+
+//client side rendering
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
-router.get('/me', authController.protect, viewsController.getAccount);
+router.get('/user', authController.protect, viewsController.getAccount);
 
 module.exports = router;

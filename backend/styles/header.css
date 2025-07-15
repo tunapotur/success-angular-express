@@ -1,38 +1,17 @@
 @layer components {
   .header {
-    @apply flex h-[4rem] w-full flex-row items-center justify-between rounded-md bg-indigo-600/75 p-4 text-indigo-50;
-  }
+    @apply flex h-[4.5rem] w-full flex-row items-center justify-between rounded-md bg-indigo-600/75 fill-indigo-50 px-6 py-4 text-indigo-50;
 
-  .header-logo {
-    @apply flex flex-row items-center justify-center;
-    &__img {
+    &__logo {
       @apply size-10;
     }
 
     &__text {
-      @apply ml-1.5 font-mono text-lg font-semibold tracking-wider text-shadow-indigo-600 text-shadow-md;
-    }
-  }
-
-  .header-page-name {
-    @apply text-xl;
-  }
-
-  .header-user {
-    @apply flex w-36 flex-row items-center justify-end;
-    &__fullname {
-      @apply mr-0.5 text-center text-sm leading-none font-medium;
-    }
-    &__name {
-      @apply capitalize;
-    }
-
-    &__surname {
-      @apply mt-1 uppercase;
+      @apply ml-1.5 font-mono text-3xl font-semibold tracking-wider italic text-shadow-indigo-600 text-shadow-md;
     }
 
     &__icon {
-      @apply size-8.5 fill-indigo-50;
+      @apply size-10;
     }
   }
 }

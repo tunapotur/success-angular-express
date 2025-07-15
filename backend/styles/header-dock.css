@@ -1,0 +1,32 @@
+@layer components {
+  .header-dock {
+    @apply flex h-[5rem] w-full flex-row items-center bg-linear-to-t from-indigo-600/75 to-sky-600/75 fill-indigo-50 px-6 py-2 text-indigo-50 sm:h-[4.5rem] sm:rounded-md;
+  }
+  .header {
+    @apply mb-[1rem] justify-between;
+
+    &__logo {
+      @apply size-12 drop-shadow-xl;
+    }
+
+    &__text {
+      @apply font-mono text-3xl font-semibold tracking-wider italic text-shadow-indigo-600 text-shadow-md;
+    }
+
+    &__icon {
+      @apply size-10;
+    }
+  }
+
+  .dock {
+    @apply mt-[1rem] justify-center;
+
+    &__icon {
+      @apply size-[4rem] drop-shadow-xl;
+    }
+
+    &__text {
+      @apply font-mono text-2xl font-semibold tracking-wider italic text-shadow-indigo-600 text-shadow-md;
+    }
+  }
+}

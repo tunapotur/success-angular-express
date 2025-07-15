@@ -1,2 +1,11 @@
-.dock
-  h1 Dock
+-
+  const link = user ? "/addSuccess" : "/login";
+
+.header-dock.dock
+  if pageName !== "addSuccess"
+    a(href=`${link}`)
+      svg.dock__icon 
+        use(xlink:href="img/icons.svg#icon-square-plus-solid")
+  else
+    h2.dock__text ADD SUCCESS
+  

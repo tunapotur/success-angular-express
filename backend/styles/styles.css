@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import './layout.css';
-@import './header.css';
-@import './dock.css';
+@import './header-dock.css';
 @import './success-card.css';
 @import './jonasstyle.css';

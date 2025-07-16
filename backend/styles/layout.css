@@ -4,10 +4,10 @@
   }
 
   .page-wrapper {
-    @apply flex flex-col items-center sm:w-xl;
+    @apply flex w-full flex-col items-center sm:w-xl;
   }
 
-  main {
+  .main {
     @apply flex h-[calc(100vh-12rem)] flex-col overflow-auto;
   }
 }

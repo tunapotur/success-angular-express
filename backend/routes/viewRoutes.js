@@ -6,6 +6,11 @@ const router = express.Router();
 
 //SSR
 router.get('/', authController.isLoggedIn, viewsController.homePageData);
+router.get(
+  '/success/:id',
+  authController.isLoggedIn,
+  viewsController.successDetail,
+);
 
 //client side rendering
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);

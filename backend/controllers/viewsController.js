@@ -16,6 +16,14 @@ exports.homePageData = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.successDetail = catchAsync(async (req, res, next) => {
+  res.status(200).render('successDetail', {
+    title: 'Success Detail',
+    user: res.locals.user,
+    id: req.params.id,
+  });
+});
+
 exports.getOverview = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
   const tours = await Tour.find();

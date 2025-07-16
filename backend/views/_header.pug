@@ -1,16 +1,16 @@
 header.header-dock.header
   a(href='/')
     svg.header__logo
-      use(xlink:href="img/icons.svg#icon-goal-skeleton")
+      use(xlink:href="../img/icons.svg#icon-goal-skeleton")
   a(href='/')
     h1.header__text SUCCESS
 
   if user
     a(href="/user")
       svg.header__icon 
-        use(xlink:href="img/icons.svg#icon-user")
+        use(xlink:href="../img/icons.svg#icon-user")
 
   else
     a(href="/login")
       svg.header__icon 
-        use(xlink:href="img/icons.svg#icon-arrow-right-to-bracket")
+        use(xlink:href="../img/icons.svg#icon-arrow-right-to-bracket")

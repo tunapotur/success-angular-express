@@ -46,7 +46,7 @@ const successSchema = new Schema(
 successSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'user',
-    select: 'name email',
+    select: 'name surname email',
   });
 
   next();

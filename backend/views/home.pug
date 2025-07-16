@@ -1,11 +1,19 @@
 extends base
+mixin success-card(success)
+  a.success-card(href=`/success/${success._id}`)
+    .success-card__header
+      svg.success-user-icon 
+        use(xlink:href="img/icons.svg#icon-user")
+      .success-header-info
+        .success-header-info__title= success.header
+        .success-header-info__user-date
+          .shi
+            .shi__date= moment(success.date).format("DD.MM.YYYY")
+            .shi__user= `${success.user.name} ${success.user.surname}` 
+    .success-card__detail= success.detail
 
 block content
-  main
+  main.main
     .success-list
       each success in success_list
-        .success-card 
-          h2.success-card--header= success.header
-          p.success-card--date= moment(success.date).format("DD.MM.YYYY")
-          p.success-card--user-name= success.user.name
-          p.success-card--detail= success.detail
+        +success-card(success)

@@ -17,22 +17,23 @@ exports.homePageData = catchAsync(async (req, res, next) => {
 });
 
 exports.successDetail = catchAsync(async (req, res, next) => {
+  // 1) Get the data
+  const success = await Success.findById(req.params.id);
+
+  if (!success) {
+    return next(new AppError('There is no success with that id.', 404));
+  }
+
+  const user = res.locals.user;
+  const owner = user
+    ? success.user._id.toString() === user._id.toString()
+    : undefined;
+
   res.status(200).render('successDetail', {
     title: 'Success Detail',
-    user: res.locals.user,
-    id: req.params.id,
-  });
-});
-
-exports.getOverview = catchAsync(async (req, res, next) => {
-  // 1) Get tour data from collection
-  const tours = await Tour.find();
-
-  // 2) Build template
-  // 3) Render that template using tour data from 1)
-  res.status(200).render('overview', {
-    title: 'All Tours',
-    tours,
+    user,
+    success,
+    owner,
   });
 });
 
@@ -52,6 +53,18 @@ exports.getTour = catchAsync(async (req, res, next) => {
   res.status(200).render('tour', {
     title: `${tour.name} Tour`,
     tour,
+  });
+});
+
+exports.getOverview = catchAsync(async (req, res, next) => {
+  // 1) Get tour data from collection
+  const tours = await Tour.find();
+
+  // 2) Build template
+  // 3) Render that template using tour data from 1)
+  res.status(200).render('overview', {
+    title: 'All Tours',
+    tours,
   });
 });
 

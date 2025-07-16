@@ -8,6 +8,6 @@
   }
 
   .main {
-    @apply flex h-[calc(100vh-12rem)] flex-col overflow-auto;
+    @apply flex h-[calc(100vh-12rem)] w-full flex-col overflow-auto;
   }
 }

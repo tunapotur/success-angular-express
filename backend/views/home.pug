@@ -13,7 +13,6 @@ mixin success-card(success)
     .success-card__detail= success.detail
 
 block content
-  main.main
-    .success-list
-      each success in success_list
-        +success-card(success)
+  .success-list
+    each success in success_list
+      +success-card(success)

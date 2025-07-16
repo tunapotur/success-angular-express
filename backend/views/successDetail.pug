@@ -1,6 +1,18 @@
 extends base
 
 block content
-  main.main
-    h1= title
-    p= id
+  .success-detail
+    .success-detail__header
+      svg.success-user-icon 
+        use(xlink:href="../img/icons.svg#icon-user")
+      .success-header-info
+        .success-header-info__title= success.header
+        .success-header-info__user-date
+          .shi
+            .shi__date= moment(success.date).format("DD.MM.YYYY")
+            .shi__user= `${success.user.name} ${success.user.surname}` 
+    .success-detail__detail= success.detail
+  
+  if owner
+    p bu successin sahibi bu 
+  

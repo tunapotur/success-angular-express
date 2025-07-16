@@ -241,6 +241,7 @@
   .main {
     display: flex;
     height: calc(100vh - 12rem);
+    width: 100%;
     flex-direction: column;
     overflow: auto;
   }
@@ -442,6 +443,74 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
+    text-align: justify;
+    text-indent: calc(var(--spacing) * 4);
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+}
+@layer components {
+  .success-detail {
+    margin: calc(var(--spacing) * 2);
+    display: flex;
+    flex-direction: column;
+    color: var(--color-gray-700);
+  }
+  .success-detail__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+    border-color: var(--color-gray-300);
+    padding: calc(var(--spacing) * 4);
+  }
+  .success-detail__header .success-user-icon {
+    width: 3rem;
+    height: 3rem;
+    fill: var(--color-gray-600);
+  }
+  .success-detail__header .success-header-info {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+  }
+  .success-detail__header .success-header-info__title {
+    max-width: var(--container-2xs);
+    font-family: var(--font-mono);
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+    --tw-tracking: var(--tracking-tight);
+    letter-spacing: var(--tracking-tight);
+  }
+  @media (width >= 40rem) {
+    .success-detail__header .success-header-info__title {
+      max-width: var(--container-md);
+    }
+  }
+  .success-detail__header .success-header-info__user-date {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
+    font-style: italic;
+  }
+  .success-detail__header .success-header-info__user-date .shi {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .success-detail__header .success-header-info__user-date .shi__date {
+    margin-right: calc(var(--spacing) * 2);
+  }
+  .success-detail__header .success-header-info__user-date .shi__user {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .success-detail__detail {
+    margin: calc(var(--spacing) * 4);
     text-align: justify;
     text-indent: calc(var(--spacing) * 4);
     font-size: var(--text-lg);

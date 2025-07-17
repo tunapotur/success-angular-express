@@ -62,7 +62,6 @@ exports.getOne = (Model, popOptions) =>
 
 exports.getAll = (Model) =>
   catchAsync(async (req, res, next) => {
-    // TODO Nested route için yapılan bu düzenleme çözümü pek generic değil. Bunu daha generic bir hale getir.
     // To allow for nested GET reviews on tour (hack)
     let filter = {};
     if (req.params.userId) filter = { user: req.params.userId };

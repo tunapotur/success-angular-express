@@ -16,7 +16,6 @@ router.get(
   authController.protect,
   viewsController.userSuccessList,
 );
-//TODO userSuccessList üzerinden buraya erişilecek
 router.get('/userProfile', authController.protect, viewsController.userProfile);
 
 //client side rendering

@@ -10821,6 +10821,11 @@
       var logOutBtn = document.querySelector(".nav__el--logout");
       var userDataForm = document.querySelector(".form-user-data");
       var userPasswordForm = document.querySelector(".form-user-password");
+      var backToPreviousPageButton = document.getElementById("go-back");
+      if (backToPreviousPageButton)
+        backToPreviousPageButton.addEventListener("click", () => {
+          history.back();
+        });
       if (loginForm)
         loginForm.addEventListener("submit", (e) => {
           e.preventDefault();

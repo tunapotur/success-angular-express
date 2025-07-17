@@ -8,8 +8,15 @@ const loginForm = document.querySelector('.form--login');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
+const backToPreviousPageButton = document.getElementById('go-back');
 
 // DELEGATION
+
+if (backToPreviousPageButton)
+  backToPreviousPageButton.addEventListener('click', () => {
+    history.back();
+  });
+
 if (loginForm)
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();

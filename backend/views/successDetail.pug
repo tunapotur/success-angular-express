@@ -3,16 +3,27 @@ extends base
 block content
   .success-detail
     .success-detail__header
-      svg.success-user-icon 
-        use(xlink:href="../img/icons.svg#icon-user")
+      a(href=`/${success.user._id}/userSuccessList`) 
+        svg.success-user-icon 
+          use(xlink:href="../img/icons.svg#icon-user")
       .success-header-info
         .success-header-info__title= success.header
         .success-header-info__user-date
           .shi
             .shi__date= moment(success.date).format("DD.MM.YYYY")
-            .shi__user= `${success.user.name} ${success.user.surname}` 
+            a.shi__user(href=`/${success.user._id}/userSuccessList`)= `${success.user.name} ${success.user.surname}` 
     .success-detail__detail= success.detail
   
-  if owner
-    p bu successin sahibi bu 
-  
+  //- div(class="flex flex-row justify-between items-center mx-6")
+  //-   button(id="go-back" class="flex gap-1 flex-row items-center justify-center w-[11rem] h-[4rem] bg-orange-400 rounded-lg cursor-pointer hover:bg-orange-500 active:translate-[1px]")
+  //-     svg(class="size-6 fill-gray-50")
+  //-       use(xlink:href="../img/icons.svg#icon-arrow-thick-left")
+  //-     div(class="font-semibold text-xl  text-gray-50 font-mono") Back
+
+  //-   if owner
+  //-     a(id="edit-success" href=`/edit-success/${success._id}` class="flex gap-1 flex-row items-center justify-center w-[11rem] h-[4rem] bg-orange-400 rounded-lg cursor-pointer hover:bg-orange-500 active:translate-[1px]")
+  //-       svg(class="size-10 fill-gray-50")
+  //-         use(xlink:href="../img/icons.svg#icon-document-edit")
+  //-       div(class="font-semibold text-xl  text-gray-50 font-mono flex flex-col leading-none")
+  //-         span Edit
+  //-         span Success

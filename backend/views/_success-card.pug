@@ -1,0 +1,12 @@
+mixin success-card(success)
+  a.success-card(href=`/success/${success._id}`)
+    .success-card__header
+      svg.success-user-icon 
+        use(xlink:href="../img/icons.svg#icon-user")
+      .success-header-info
+        .success-header-info__title= success.header
+        .success-header-info__user-date
+          .shi
+            .shi__date= moment(success.date).format("DD.MM.YYYY")
+            .shi__user= `${success.user.name} ${success.user.surname}` 
+    .success-card__detail= success.detail

@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const expressMongoSanitize = require('@exortek/express-mongo-sanitize');
 const { xss } = require('express-xss-sanitizer');
 const hpp = require('hpp');
+var cors = require('cors');
 const moment = require('moment');
 
 //Error management imports
@@ -20,6 +21,9 @@ const successRouter = require('./routes/successRouter');
 const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
+
+app.use(cors());
+
 app.locals.moment = moment;
 
 app.set('view engine', 'pug');
@@ -30,7 +34,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set security HTTP headers
-app.use(helmet());
+app.use(
+  helmet({
+    referrerPolicy: false,
+  }),
+);
 
 // Development logging
 // Morgan middleware is used for web server information when development mode
@@ -76,6 +84,10 @@ app.use('/', viewRouter);
 app.use('/test', testRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/successes', successRouter);
+
+app.get('/back-to-previous-page', (req, res) => {
+  res.redirect(req.get('Referrer') || '/');
+});
 
 /** Hatlı girilen url girişi uyarısı*/
 app.all('{*splat}', (req, res, next) => {

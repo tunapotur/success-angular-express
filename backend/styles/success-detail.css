@@ -33,7 +33,7 @@
     }
 
     &__detail {
-      @apply m-4 text-justify indent-4 text-lg;
+      @apply mx-4 mt-10 mb-16 text-justify indent-4 text-lg;
     }
   }
 }

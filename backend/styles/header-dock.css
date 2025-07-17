@@ -2,6 +2,7 @@
   .header-dock {
     @apply flex h-[5rem] w-full flex-row items-center bg-linear-to-t from-indigo-600/75 to-sky-600/75 fill-indigo-50 px-6 py-2 text-indigo-50 sm:h-[4.5rem] sm:rounded-md;
   }
+
   .header {
     @apply mb-[1rem] justify-between;
 
@@ -19,10 +20,10 @@
   }
 
   .dock {
-    @apply mt-[1rem] justify-center;
+    @apply mt-[1rem] grid grid-cols-3;
 
     &__icon {
-      @apply size-[4rem] drop-shadow-xl;
+      @apply size-[3rem] cursor-pointer drop-shadow-xl;
     }
 
     &__text {

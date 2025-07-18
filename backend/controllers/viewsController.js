@@ -26,9 +26,8 @@ exports.successDetail = catchAsync(async (req, res, next) => {
 
   const user = res.locals.user;
 
-  const owner = user
-    ? success.user._id.toString() === user._id.toString()
-    : undefined;
+  const owner =
+    user && success.user._id.toString() === user._id.toString() ? true : false;
 
   res.status(200).render('successDetail', {
     title: 'Success Detail',
@@ -40,22 +39,17 @@ exports.successDetail = catchAsync(async (req, res, next) => {
 });
 
 exports.userSuccessList = catchAsync(async (req, res) => {
-  const userSuccessList = await Success.find({ user: req.params.userId });
+  const userId = req.params.userId;
+
+  const userSuccessList = await Success.find({ user: userId });
 
   if (!userSuccessList) {
     return next(new AppError('There is no success with that id.', 404));
   }
 
-  const user = res.locals.user;
-  const userId = req.params.userId;
-
   // TODO Beynim durdu yarın buna bak!
   // https://github.com/expressjs/cors
   // https://medium.com/@gokhansengun/cors-nedir-ve-ne-i%C5%9Fe-yarar-27006d85bf54
-  //
-  const owner = user
-    ? success.user._id.toString() === user._id.toString()
-    : undefined;
 
   res.status(200).render('userSuccessList', {
     title: 'User Success List',
@@ -73,9 +67,12 @@ exports.getLoginForm = (req, res) => {
 };
 
 exports.userProfile = (req, res) => {
+  const userId = req.params.userId;
+
   res.status(200).render('userProfile', {
     title: 'User Profile',
     url: req.path,
+    userId,
   });
 };
 

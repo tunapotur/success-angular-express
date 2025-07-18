@@ -3,7 +3,7 @@
     @apply m-2 flex flex-col text-gray-700;
 
     &__header {
-      @apply flex flex-row justify-between border-b-1 border-gray-300 p-4;
+      @apply flex flex-row flex-wrap justify-between gap-2 border-b-1 border-gray-300 p-4;
 
       .success-user-icon {
         @apply size-[3rem] fill-gray-600;

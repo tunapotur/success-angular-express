@@ -1,5 +1,5 @@
 -
-  const link = user ? "/addSuccess" : "/login";
+  const link = user ? "/add-success" : "/login";
   
 
 .header-dock.dock
@@ -9,7 +9,7 @@
         use(xlink:href="../img/icons.svg#icon-arrow-thick-left")
 
   div(class="justify-self-center")
-    if url!=="/addSuccess"
+    if url!=="/add-success"
       a(href=`${link}`)
         svg.dock__icon 
           use(xlink:href="../img/icons.svg#icon-square-plus-solid")
@@ -21,8 +21,3 @@
       a(id="edit-success" href=`/edit-success/${success._id}`)
         svg.dock__icon 
           use(xlink:href="../img/icons.svg#icon-document-edit")
-    else if (url.includes("/success/") || url.includes("/userSuccessList"))
-      a(href=`/userProfile`)
-        svg.dock__icon 
-          use(xlink:href="../img/icons.svg#icon-user")
-

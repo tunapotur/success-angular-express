@@ -3,14 +3,17 @@ extends base
 block content
   .success-detail
     .success-detail__header
-      a(href=`/${success.user._id}/userSuccessList`) 
+      a(href=`/${success.user._id}/user-profile`) 
         svg.success-user-icon 
           use(xlink:href="../img/icons.svg#icon-user")
+      a(href=`/${success.user._id}/user-success-list`) 
+        svg.success-user-icon 
+          use(xlink:href="../img/icons.svg#icon-list-ul-solid")
       .success-header-info
         .success-header-info__title= success.header
         .success-header-info__user-date
           .shi
             .shi__date= moment(success.date).format("DD.MM.YYYY")
-            a.shi__user(href=`/${success.user._id}/userSuccessList`)= `${success.user.name} ${success.user.surname}` 
+            a.shi__user(href=`/${success.user._id}/user-profile`)= `${success.user.name} ${success.user.surname}` 
     .success-detail__detail= success.detail
   

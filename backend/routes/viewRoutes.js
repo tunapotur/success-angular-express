@@ -7,26 +7,26 @@ const router = express.Router();
 //SSR
 router.get('/', authController.isLoggedIn, viewsController.homePageData);
 router.get(
-  '/success/:id',
+  '/success-detail/:id',
   authController.isLoggedIn,
   viewsController.successDetail,
 );
 router.get(
-  '/:userId/userSuccessList',
-  authController.protect,
+  '/:userId/user-success-list',
+  authController.isLoggedIn,
   viewsController.userSuccessList,
 );
-router.get('/userProfile', authController.protect, viewsController.userProfile);
+router.get('/:userId/user-profile', viewsController.userProfile);
 
 //client side rendering
 // TODO get komutu put, add, delete şeklinde değiştirilecek
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
-router.get('/addSuccess', authController.protect, viewsController.addSuccess);
+router.get('/add-success', authController.protect, viewsController.addSuccess);
 router.get(
   '/edit-success/:id',
   authController.protect,
   viewsController.editSuccess,
 );
-router.get('/userEdit', authController.protect, viewsController.userEdit);
+router.get('/user-edit', authController.protect, viewsController.userEdit);
 
 module.exports = router;

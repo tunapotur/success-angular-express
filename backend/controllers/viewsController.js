@@ -74,13 +74,16 @@ exports.userProfile = catchAsync(async (req, res) => {
   });
 });
 
+exports.wrongPage = (req, res) => {
+  res.status(200).render('wrongPage', { title: 'Wrong Page' });
+};
+
 //Client Side Rendering
 /** Login */
 exports.getLoginForm = (req, res) => {
   const user = res.locals.user;
 
-  // TODO Login olan kullanıcıları ana sayfaya döndürülecek!
-  // if (user) res.redirect('/');
+  if (user) res.redirect('/wrong-page');
 
   res.status(200).render('login', {
     title: 'Log into your account',

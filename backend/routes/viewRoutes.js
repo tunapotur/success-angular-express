@@ -29,6 +29,9 @@ router.get(
   viewsController.userProfile,
 );
 
+/** Wrong Page */
+router.get('/wrong-page', authController.isLoggedIn, viewsController.wrongPage);
+
 //client side rendering
 // TODO get komutu put, add, delete şeklinde değiştirilecek
 
@@ -36,6 +39,7 @@ router.get(
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
 
 /** Add Success */
+// TODO hatalı işlemler için web sayfası düzeni oturtulacak.
 router.get('/add-success', authController.protect, viewsController.addSuccess);
 
 /** Edit Success */

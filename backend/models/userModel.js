@@ -27,6 +27,11 @@ const userSchema = new Schema(
       maxLength: 120,
       validator: [validator.isEmail, 'Please provide a valid email'],
     },
+    about: {
+      type: String,
+      trim: true,
+      maxLength: 4096,
+    },
     password: {
       type: String,
       required: [true, 'Password is required'],

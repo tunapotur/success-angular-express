@@ -16,7 +16,11 @@ router.get(
   authController.isLoggedIn,
   viewsController.userSuccessList,
 );
-router.get('/:userId/user-profile', viewsController.userProfile);
+router.get(
+  '/:userId/user-profile',
+  authController.isLoggedIn,
+  viewsController.userProfile,
+);
 
 //client side rendering
 // TODO get komutu put, add, delete şeklinde değiştirilecek

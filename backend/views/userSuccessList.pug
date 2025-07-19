@@ -2,6 +2,7 @@ extends base
 include _success-card
 
 block content
+  h1(class="text-gray-700 my-[1rem] text-center font-mono text-2xl font-semibold tracking-tight")= `${userSuccessList[0].user.name} ${userSuccessList[0].user.surname} Success List`
   .success-list
     each success in userSuccessList
       +success-card(success)

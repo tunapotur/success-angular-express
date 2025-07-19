@@ -3,37 +3,37 @@
     @apply m-2 flex flex-col text-gray-700;
 
     &__header {
-      @apply flex flex-row flex-wrap justify-between gap-2 border-b-1 border-gray-300 p-4;
+      @apply flex flex-col flex-wrap justify-between gap-4 border-b-1 border-gray-300 p-4;
 
-      .success-user-icon {
+      .icon-wrapper {
+        @apply flex flex-row justify-between;
+      }
+
+      .success-detail-icon {
         @apply size-[3rem] fill-gray-600;
       }
 
       .success-header-info {
-        @apply flex flex-col text-right;
+        @apply mt-8 flex flex-col;
+
         &__title {
-          @apply max-w-2xs font-mono text-xl font-semibold tracking-tight sm:max-w-md;
+          @apply text-right font-mono text-xl font-semibold tracking-tight;
         }
 
         &__user-date {
-          @apply text-sm font-light italic;
-          .shi {
-            @apply flex flex-row justify-end;
-
-            &__date {
-              @apply mr-2;
-            }
-
-            &__user {
-              @apply text-sm;
-            }
+          @apply flex flex-row justify-end text-sm font-light italic;
+          .success-date {
+            @apply mr-2;
+          }
+          .success-user {
+            @apply text-sm;
           }
         }
       }
     }
 
     &__detail {
-      @apply mx-4 mt-10 mb-16 text-justify indent-4 text-lg;
+      @apply mx-1 mt-5 mb-6 text-justify indent-4 text-lg;
     }
   }
 }

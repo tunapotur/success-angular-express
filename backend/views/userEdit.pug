@@ -1,5 +1,12 @@
 extends base
 
 block content
+  a(href=`/${user._id}/user-success-list`) 
+    svg(class="size-[3rem] fill-gray-600")
+      use(xlink:href="../img/icons.svg#icon-list-ul-solid")
+
   h1= title
-  h1= id
+  p= user._id 
+  p= user.name 
+  p= user.surname 
+  p= user.email 

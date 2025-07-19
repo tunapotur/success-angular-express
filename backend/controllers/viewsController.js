@@ -3,6 +3,8 @@ const User = require('./../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
+//SSR
+/** Home Page */
 exports.homePageData = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
   const success_list = await Success.find();
@@ -16,6 +18,7 @@ exports.homePageData = catchAsync(async (req, res, next) => {
   });
 });
 
+/** Success Detail */
 exports.successDetail = catchAsync(async (req, res, next) => {
   // 1) Get the data
   const success = await Success.findById(req.params.id);
@@ -37,6 +40,7 @@ exports.successDetail = catchAsync(async (req, res, next) => {
   });
 });
 
+/** User Success List */
 exports.userSuccessList = catchAsync(async (req, res) => {
   const userId = req.params.userId;
 
@@ -53,6 +57,7 @@ exports.userSuccessList = catchAsync(async (req, res) => {
   });
 });
 
+/** User Profile */
 exports.userProfile = catchAsync(async (req, res) => {
   const userId = req.params.userId;
   const user = await User.findById(userId).select(
@@ -69,27 +74,37 @@ exports.userProfile = catchAsync(async (req, res) => {
   });
 });
 
+//Client Side Rendering
+/** Login */
 exports.getLoginForm = (req, res) => {
+  const user = res.locals.user;
+
+  // TODO Login olan kullanıcıları ana sayfaya döndürülecek!
+  // if (user) res.redirect('/');
+
   res.status(200).render('login', {
     title: 'Log into your account',
   });
 };
 
-exports.userEdit = (req, res) => {
-  res.status(200).render('userEdit', {
-    title: 'User Edit',
-    user: req.user,
-  });
-};
-
+/** Add Success */
 exports.addSuccess = (req, res) => {
   res.status(200).render('addSuccess', {
     title: 'Add Success',
   });
 };
 
+/** Edit Success */
 exports.editSuccess = (req, res) => {
   res.status(200).render('editSuccess', {
     title: 'Edit Success',
+  });
+};
+
+/** User Edit */
+exports.userEdit = (req, res) => {
+  res.status(200).render('userEdit', {
+    title: 'User Edit',
+    user: req.user,
   });
 };

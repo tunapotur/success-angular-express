@@ -85,10 +85,6 @@ app.use('/test', testRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/successes', successRouter);
 
-app.get('/back-to-home-page', (req, res) => {
-  res.redirect('/');
-});
-
 /** Hatlı girilen url girişi uyarısı*/
 app.all('{*splat}', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

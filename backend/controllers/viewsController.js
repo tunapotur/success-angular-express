@@ -80,10 +80,16 @@ exports.wrongPage = (req, res) => {
 
 //Client Side Rendering
 /** Login */
-exports.getLoginForm = (req, res) => {
+exports.getLoginForm = (req, res, next) => {
   const user = res.locals.user;
 
-  if (user) res.redirect('/wrong-page');
+  if (user)
+    return next(
+      new AppError(
+        `Kullanıcı giriş yaptığı için ${req.originalUrl} safyasına giremezsiniz!`,
+        401,
+      ),
+    );
 
   res.status(200).render('login', {
     title: 'Log into your account',

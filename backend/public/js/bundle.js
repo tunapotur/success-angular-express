@@ -10778,7 +10778,12 @@
             method: "GET",
             url: "http://localhost:3333/api/v1/users/logout"
           });
-          if (res.data.status = "success") location.reload(true);
+          if (res.data.status === "success") {
+            showAlert("success", "Logged out successfully!");
+            window.setTimeout(() => {
+              location.assign("/");
+            }, 1500);
+          }
         } catch (err) {
           console.log(err.response);
           showAlert("error", "Error logging out! Try again.");
@@ -10818,7 +10823,7 @@
       init_login();
       init_updateSettings();
       var loginForm = document.querySelector(".form--login");
-      var logOutBtn = document.querySelector(".nav__el--logout");
+      var logOutBtn = document.getElementById("logout");
       var userDataForm = document.querySelector(".form-user-data");
       var userPasswordForm = document.querySelector(".form-user-password");
       var backToPreviousPageButton = document.getElementById("go-back");

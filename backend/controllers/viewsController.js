@@ -15,6 +15,7 @@ exports.homePageData = catchAsync(async (req, res, next) => {
     title: 'Welcome Success',
     success_list,
     user: res.locals.user,
+    url: req.originalUrl,
   });
 });
 
@@ -53,6 +54,7 @@ exports.userSuccessList = catchAsync(async (req, res) => {
   res.status(200).render('userSuccessList', {
     title: 'User Success List',
     userId,
+    user: res.locals.user,
     userSuccessList,
   });
 });
@@ -60,23 +62,20 @@ exports.userSuccessList = catchAsync(async (req, res) => {
 /** User Profile */
 exports.userProfile = catchAsync(async (req, res) => {
   const userId = req.params.userId;
-  const user = await User.findById(userId).select(
+  const userInfo = await User.findById(userId).select(
     '-__v -createdAt -updatedAt -role -theme',
   );
 
-  if (!user) {
+  if (!userInfo) {
     return next(new AppError('No user found with that ID', 404));
   }
 
   res.status(200).render('userProfile', {
     title: 'User Profile',
-    user,
+    userInfo,
+    user: res.locals.user,
   });
 });
-
-exports.wrongPage = (req, res) => {
-  res.status(200).render('wrongPage', { title: 'Wrong Page' });
-};
 
 //Client Side Rendering
 /** Login */
@@ -86,7 +85,7 @@ exports.getLoginForm = (req, res, next) => {
   if (user)
     return next(
       new AppError(
-        `Kullanıcı giriş yaptığı için ${req.originalUrl} safyasına giremezsiniz!`,
+        `Kullanıcı giriş yaptığı için ${req.originalUrl.substring(1)} sayfasına giriş yapamazsınız!`,
         401,
       ),
     );

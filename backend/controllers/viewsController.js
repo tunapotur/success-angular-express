@@ -99,6 +99,7 @@ exports.getLoginForm = (req, res, next) => {
 exports.addSuccess = (req, res) => {
   res.status(200).render('addSuccess', {
     title: 'Add Success',
+    url: req.originalUrl,
   });
 };
 

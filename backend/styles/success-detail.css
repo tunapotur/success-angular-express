@@ -1,16 +1,16 @@
 @layer components {
   .success-detail {
-    @apply m-2 flex flex-col text-gray-700;
+    @apply m-2 flex flex-col;
 
     &__header {
-      @apply flex flex-col flex-wrap justify-between gap-4 border-b-1 border-gray-300 p-4;
+      @apply flex flex-col flex-wrap justify-between gap-4 border-b-1 border-gray-300 p-4 dark:border-gray-600;
 
       .icon-wrapper {
         @apply flex flex-row justify-between;
       }
 
       .success-detail-icon {
-        @apply size-[3rem] fill-gray-600;
+        @apply size-[3rem] fill-gray-600 dark:fill-gray-200;
       }
 
       .success-header-info {

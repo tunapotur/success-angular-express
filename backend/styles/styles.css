@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
 @import './layout.css';
 @import './header-dock.css';
 @import './success-card.css';

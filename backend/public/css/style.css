@@ -14,6 +14,8 @@
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
+    --color-black: #000;
+    --color-white: #fff;
     --spacing: 0.25rem;
     --container-2xs: 18rem;
     --container-md: 28rem;
@@ -268,6 +270,9 @@
   .border-gray-300 {
     border-color: var(--color-gray-300);
   }
+  .bg-white {
+    background-color: var(--color-white);
+  }
   .fill-gray-600 {
     fill: var(--color-gray-600);
   }
@@ -324,6 +329,9 @@
   }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .dark\:bg-black:where(.dark, .dark *) {
+    background-color: var(--color-black);
   }
 }
 @layer components {

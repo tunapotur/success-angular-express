@@ -4,7 +4,7 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
-//SSR
+//*SSR
 /** Home Page */
 router.get('/', authController.isLoggedIn, viewsController.homePageData);
 
@@ -29,7 +29,7 @@ router.get(
   viewsController.userProfile,
 );
 
-//client side rendering
+//*Client Side Rendering
 // TODO get komutu put, add, delete şeklinde değiştirilecek
 
 /** Login */

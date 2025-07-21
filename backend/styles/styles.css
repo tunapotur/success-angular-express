@@ -1,8 +1,14 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
+@layer components {
+  h1.page-header {
+    @apply text-center font-mono text-2xl font-semibold tracking-tight;
+  }
+}
+
 @import './layout.css';
 @import './header-dock.css';
 @import './success-card.css';
-@import './success-detail.css';
+@import './detail-page.css';
 @import './jonasstyle.css';

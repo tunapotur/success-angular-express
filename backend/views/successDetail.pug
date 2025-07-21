@@ -1,26 +1,26 @@
 extends base
 
 block content
-  .success-detail
-    .success-detail__header
-      .icon-wrapper
+  .detail-wrapper
+    .detail-header
+      .header-info
+        h1.page-header= success.header
+        .header-info__sub-title
+          span= moment(success.date).format("DD.MM.YYYY")
+          a.user(href=`/${success.user._id}/user-profile`)= `${success.user.name} ${success.user.surname}` 
+
+      .icon-group
         a(href=`/${success.user._id}/user-profile`) 
-          svg.success-detail-icon 
+          svg.icon-group__icon
             use(xlink:href="../img/icons.svg#icon-user")
 
         if owner
           a(id="edit-success" href=`/edit-success/${success._id}`) 
-            svg.success-detail-icon 
+            svg.icon-group__icon
               use(xlink:href="../img/icons.svg#icon-document-edit1")
         
         a(href=`/${success.user._id}/user-success-list`) 
-          svg.success-detail-icon 
+          svg.icon-group__icon
             use(xlink:href="../img/icons.svg#icon-list-ul-solid")
-
-      .success-header-info
-        .success-header-info__title= success.header
-        .success-header-info__user-date
-            .success-date= moment(success.date).format("DD.MM.YYYY")
-            a.success-user(href=`/${success.user._id}/user-profile`)= `${success.user.name} ${success.user.surname}` 
-    
-    .success-detail__detail= success.detail
+      
+    .detail-text= success.detail

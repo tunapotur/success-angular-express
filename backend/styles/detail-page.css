@@ -1,0 +1,29 @@
+@layer components {
+  .detail-wrapper {
+    @apply flex flex-col flex-wrap;
+
+    .detail-header {
+      @apply flex flex-col flex-wrap justify-between gap-6 border-b-1 border-gray-300 p-4 dark:border-gray-600;
+
+      .header-info {
+        @apply flex flex-col gap-2;
+
+        &__sub-title {
+          @apply flex flex-row justify-end gap-2 text-sm font-light italic;
+        }
+      }
+
+      .icon-group {
+        @apply flex flex-row justify-between;
+
+        &__icon {
+          @apply size-[3rem] fill-gray-600 dark:fill-gray-200;
+        }
+      }
+    }
+
+    .detail-text {
+      @apply mx-1 mt-5 mb-6 text-justify indent-4 text-lg;
+    }
+  }
+}

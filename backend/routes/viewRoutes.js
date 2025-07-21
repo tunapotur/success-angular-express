@@ -29,10 +29,10 @@ router.get(
   viewsController.userProfile,
 );
 
-// TODO hatalı işlemler için web sayfası düzeni oturtulacak.
-//*Client Side Rendering
-
+// TODO hatalı işlemler için web sayfası düzeni oturtulacak
 // TODO get komutu put, add, delete şeklinde değiştirilecek
+
+//*Client Side Rendering
 /** Login */
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
 

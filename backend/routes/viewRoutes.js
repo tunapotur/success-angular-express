@@ -6,7 +6,7 @@ const router = express.Router();
 
 //*SSR
 /** Home Page */
-router.get('/', authController.isLoggedIn, viewsController.homePageData);
+router.get('/', authController.isLoggedIn, viewsController.home);
 
 /** Success Detail */
 router.get(
@@ -36,6 +36,7 @@ router.get(
 /** Login */
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
 
+/** Protected Routes */
 /** Add Success */
 router.get('/add-success', authController.protect, viewsController.addSuccess);
 

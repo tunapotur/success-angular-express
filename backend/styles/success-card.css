@@ -13,10 +13,6 @@
     &__header {
       @apply flex flex-row justify-between border-b-1 border-gray-300 p-4 dark:border-gray-600;
 
-      .success-user-icon {
-        @apply size-[3rem] fill-gray-600 dark:fill-gray-200;
-      }
-
       .success-header-info {
         @apply flex flex-col text-right;
         &__title {

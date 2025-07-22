@@ -5,7 +5,7 @@ const AppError = require('../utils/appError');
 
 //SSR
 /** Home Page */
-exports.homePageData = catchAsync(async (req, res, next) => {
+exports.home = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
   const success_list = await Success.find();
 
@@ -33,7 +33,7 @@ exports.successDetail = catchAsync(async (req, res, next) => {
   const owner =
     user && success.user._id.toString() === user._id.toString() ? true : false;
 
-  res.status(200).render('successDetail', {
+  res.status(200).render('success-detail', {
     title: 'Success Detail',
     user,
     success,
@@ -51,7 +51,7 @@ exports.userSuccessList = catchAsync(async (req, res) => {
     return next(new AppError('There is no success with that id.', 404));
   }
 
-  res.status(200).render('userSuccessList', {
+  res.status(200).render('user-success-list', {
     title: 'User Success List',
     userId,
     user: res.locals.user,
@@ -70,7 +70,7 @@ exports.userProfile = catchAsync(async (req, res) => {
     return next(new AppError('No user found with that ID', 404));
   }
 
-  res.status(200).render('userProfile', {
+  res.status(200).render('user-profile', {
     title: 'User Profile',
     userInfo,
     user: res.locals.user,
@@ -97,7 +97,7 @@ exports.getLoginForm = (req, res, next) => {
 
 /** Add Success */
 exports.addSuccess = (req, res) => {
-  res.status(200).render('addSuccess', {
+  res.status(200).render('add-success', {
     title: 'Add Success',
     url: req.originalUrl,
   });
@@ -105,15 +105,15 @@ exports.addSuccess = (req, res) => {
 
 /** Edit Success */
 exports.editSuccess = (req, res) => {
-  res.status(200).render('editSuccess', {
+  res.status(200).render('edit-success', {
     title: 'Edit Success',
   });
 };
 
 /** User Edit */
 exports.userEdit = (req, res) => {
-  res.status(200).render('userEdit', {
+  res.status(200).render('user-edit', {
     title: 'User Edit',
-    user: req.user,
+    user: res.locals.user,
   });
 };

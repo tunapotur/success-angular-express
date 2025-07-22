@@ -5,6 +5,10 @@
   h1.page-header {
     @apply text-center font-mono text-2xl font-semibold tracking-tight;
   }
+
+  .page-icon {
+    @apply size-[3rem] cursor-pointer fill-gray-600 dark:fill-gray-200;
+  }
 }
 
 @import './layout.css';

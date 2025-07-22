@@ -11,16 +11,16 @@ block content
 
       .icon-group
         a(href=`/${success.user._id}/user-profile`) 
-          svg.icon-group__icon
+          svg.page-icon
             use(xlink:href="../img/icons.svg#icon-user")
 
         if owner
           a(id="edit-success" href=`/edit-success/${success._id}`) 
-            svg.icon-group__icon
+            svg.page-icon
               use(xlink:href="../img/icons.svg#icon-document-edit1")
         
         a(href=`/${success.user._id}/user-success-list`) 
-          svg.icon-group__icon
+          svg.page-icon
             use(xlink:href="../img/icons.svg#icon-list-ul-solid")
       
     .detail-text= success.detail

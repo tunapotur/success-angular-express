@@ -15,10 +15,6 @@
 
       .icon-group {
         @apply flex flex-row justify-between;
-
-        &__icon {
-          @apply size-[3rem] fill-gray-600 dark:fill-gray-200;
-        }
       }
     }
 

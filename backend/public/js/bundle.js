@@ -10827,6 +10827,21 @@
       var userDataForm = document.querySelector(".form-user-data");
       var userPasswordForm = document.querySelector(".form-user-password");
       var backToPreviousPageButton = document.getElementById("go-back");
+      var lightThemeBtn = document.getElementById("light-theme");
+      var darkThemeBtn = document.getElementById("dark-theme");
+      var systemThemeBtn = document.getElementById("system-theme");
+      if (lightThemeBtn)
+        lightThemeBtn.addEventListener("click", () => {
+          document.documentElement.classList.remove("dark");
+        });
+      if (darkThemeBtn)
+        darkThemeBtn.addEventListener("click", () => {
+          document.documentElement.classList.add("dark");
+        });
+      if (systemThemeBtn)
+        systemThemeBtn.addEventListener("click", () => {
+          console.log("System Theme");
+        });
       if (backToPreviousPageButton)
         backToPreviousPageButton.addEventListener("click", () => {
           history.back();

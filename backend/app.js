@@ -20,6 +20,9 @@ const userRouter = require('./routes/userRoutes');
 const successRouter = require('./routes/successRouter');
 const viewRouter = require('./routes/viewRoutes');
 
+// Controller
+const authController = require('./controllers/authController');
+
 const app = express();
 
 app.use(cors());
@@ -86,7 +89,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/successes', successRouter);
 
 /** Hatlı girilen url girişi uyarısı*/
-app.all('{*splat}', (req, res, next) => {
+app.all('{*splat}', authController.isLoggedIn, (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 

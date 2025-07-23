@@ -12,6 +12,16 @@ router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);
 
+// check is user logged in
+const isUserLoggedIn = (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    date: new Date().toLocaleString(),
+    isUserLoggedIn: res.locals.user ? true : false,
+  });
+};
+router.get('/is-user-logged-in', authController.isLoggedIn, isUserLoggedIn);
+
 // Protect all routes after this middleware
 router.use(authController.protect);
 

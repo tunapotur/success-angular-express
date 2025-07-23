@@ -42,3 +42,21 @@ export const logout = async () => {
     showAlert('error', 'Error logging out! Try again.');
   }
 };
+
+export const isUserLoggedIn = async () => {
+  try {
+    const res = await axios({
+      method: 'GET',
+      url: 'http://localhost:3333/api/v1/users/is-user-logged-in',
+    });
+
+    if (res.data.status === 'success') {
+      console.log(res.data.isUserLoggedIn);
+
+      return res.data.isUserLoggedIn;
+    }
+  } catch (err) {
+    console.log(err.response);
+    showAlert('error', 'Checking user logged status error');
+  }
+};

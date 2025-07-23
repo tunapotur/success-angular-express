@@ -10747,7 +10747,7 @@
   });
 
   // public/js/login.js
-  var login, logout;
+  var login, logout, isUserLoggedIn;
   var init_login = __esm({
     "public/js/login.js"() {
       init_axios2();
@@ -10787,6 +10787,21 @@
         } catch (err) {
           console.log(err.response);
           showAlert("error", "Error logging out! Try again.");
+        }
+      };
+      isUserLoggedIn = async () => {
+        try {
+          const res = await axios_default({
+            method: "GET",
+            url: "http://localhost:3333/api/v1/users/is-user-logged-in"
+          });
+          if (res.data.status === "success") {
+            console.log(res.data.isUserLoggedIn);
+            return res.data.isUserLoggedIn;
+          }
+        } catch (err) {
+          console.log(err.response);
+          showAlert("error", "Checking user logged status error");
         }
       };
     }
@@ -10830,17 +10845,10 @@
       var lightThemeBtn = document.getElementById("light-theme");
       var darkThemeBtn = document.getElementById("dark-theme");
       var systemThemeBtn = document.getElementById("system-theme");
-      if (lightThemeBtn)
-        lightThemeBtn.addEventListener("click", () => {
-          document.documentElement.classList.remove("dark");
-        });
-      if (darkThemeBtn)
-        darkThemeBtn.addEventListener("click", () => {
-          document.documentElement.classList.add("dark");
-        });
-      if (systemThemeBtn)
-        systemThemeBtn.addEventListener("click", () => {
-          console.log("System Theme");
+      var testUserLoggedIn = document.getElementById("test-user-logged-in");
+      if (testUserLoggedIn)
+        testUserLoggedIn.addEventListener("click", () => {
+          isUserLoggedIn();
         });
       if (backToPreviousPageButton)
         backToPreviousPageButton.addEventListener("click", () => {

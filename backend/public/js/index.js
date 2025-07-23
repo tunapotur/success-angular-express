@@ -1,6 +1,6 @@
 /* eslint-disable */
 import '@babel/polyfill';
-import { login, logout } from './login';
+import { login, logout, isUserLoggedIn } from './login';
 import { updateSettings } from './updateSettings';
 // import { lightMode, darkMode, systemMode } from './lightDarkMode';
 
@@ -13,6 +13,23 @@ const backToPreviousPageButton = document.getElementById('go-back');
 const lightThemeBtn = document.getElementById('light-theme');
 const darkThemeBtn = document.getElementById('dark-theme');
 const systemThemeBtn = document.getElementById('system-theme');
+
+const testUserLoggedIn = document.getElementById('test-user-logged-in');
+
+if (testUserLoggedIn)
+  testUserLoggedIn.addEventListener('click', () => {
+    isUserLoggedIn();
+  });
+/**
+ * DATABASE
+ * 'system', 'dark', 'light'
+ *
+ * Logged or not logged
+ *
+ * not logged in
+ * web sitesi sistem düzenini işletsin.
+ *
+ */
 
 /*
 window
@@ -38,7 +55,7 @@ window
 // localStorage.removeItem("theme");
 
 // DELEGATION
-
+/*
 if (lightThemeBtn)
   lightThemeBtn.addEventListener('click', () => {
     document.documentElement.classList.remove('dark');
@@ -53,6 +70,7 @@ if (systemThemeBtn)
   systemThemeBtn.addEventListener('click', () => {
     console.log('System Theme');
   });
+*/
 
 if (backToPreviousPageButton)
   backToPreviousPageButton.addEventListener('click', () => {

@@ -38,6 +38,7 @@ const sendErrorDev = (err, req, res) => {
   return res.status(err.statusCode).render('error', {
     title: 'Something went wrong!',
     msg: err.message,
+    user: res.locals.user,
   });
 };
 
@@ -68,6 +69,7 @@ const sendErrorProd = (err, req, res) => {
     return res.status(err.statusCode).render('error', {
       title: 'Something went wrong!',
       msg: err.message,
+      user: res.locals.user,
     });
   }
   // B) Programming or other unknown error: don't leak error details
@@ -77,6 +79,7 @@ const sendErrorProd = (err, req, res) => {
   return res.status(err.statusCode).render('error', {
     title: 'Something went wrong!',
     msg: 'Please try again later.',
+    user: res.locals.user,
   });
 };
 

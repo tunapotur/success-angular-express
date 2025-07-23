@@ -43,18 +43,18 @@ export const logout = async () => {
   }
 };
 
-export const isUserLoggedIn = async () => {
+export const getUserLoginThemeInfo = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://localhost:3333/api/v1/users/is-user-logged-in',
+      url: 'http://localhost:3333/api/v1/users/user-login-theme-info',
     });
 
-    if (res.data.status === 'success') {
-      console.log(res.data.isUserLoggedIn);
-
-      return res.data.isUserLoggedIn;
-    }
+    if (res.data.status === 'success')
+      return {
+        isUserLoggedIn: res.data.isUserLoggedIn,
+        userTheme: res.data.userTheme,
+      };
   } catch (err) {
     console.log(err.response);
     showAlert('error', 'Checking user logged status error');

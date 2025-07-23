@@ -4,39 +4,31 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
+// Check is user logged in all routes after this middleware
+router.use(authController.isLoggedIn);
+
 //*SSR
 /** Home Page */
-router.get('/', authController.isLoggedIn, viewsController.home);
+router.get('/', viewsController.home);
 
 /** Success Detail */
-router.get(
-  '/success-detail/:id',
-  authController.isLoggedIn,
-  viewsController.successDetail,
-);
+router.get('/success-detail/:id', viewsController.successDetail);
 
 /** User Success List */
-router.get(
-  '/:userId/user-success-list',
-  authController.isLoggedIn,
-  viewsController.userSuccessList,
-);
+router.get('/:userId/user-success-list', viewsController.userSuccessList);
 
 /** User Profile */
-router.get(
-  '/:userId/user-profile',
-  authController.isLoggedIn,
-  viewsController.userProfile,
-);
+router.get('/:userId/user-profile', viewsController.userProfile);
 
 // TODO hatalı işlemler için web sayfası düzeni oturtulacak
 // TODO get komutu put, add, delete şeklinde değiştirilecek
 
 //*Client Side Rendering
 /** Login */
-router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
+router.get('/login', viewsController.getLoginForm);
 
 /** Protected Routes */
+
 /** Add Success */
 router.get('/add-success', authController.protect, viewsController.addSuccess);
 

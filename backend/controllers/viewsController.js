@@ -92,6 +92,7 @@ exports.getLoginForm = (req, res, next) => {
 
   res.status(200).render('login', {
     title: 'Log into your account',
+    user,
   });
 };
 
@@ -100,6 +101,7 @@ exports.addSuccess = (req, res) => {
   res.status(200).render('add-success', {
     title: 'Add Success',
     url: req.originalUrl,
+    user: res.locals.user,
   });
 };
 
@@ -107,6 +109,7 @@ exports.addSuccess = (req, res) => {
 exports.editSuccess = (req, res) => {
   res.status(200).render('edit-success', {
     title: 'Edit Success',
+    user: res.locals.user,
   });
 };
 

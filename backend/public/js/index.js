@@ -1,6 +1,6 @@
 /* eslint-disable */
 import '@babel/polyfill';
-import { login, logout, isUserLoggedIn } from './login';
+import { login, logout, getUserLoginThemeInfo } from './login';
 import { updateSettings } from './updateSettings';
 // import { lightMode, darkMode, systemMode } from './lightDarkMode';
 
@@ -10,67 +10,40 @@ const logOutBtn = document.getElementById('logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const backToPreviousPageButton = document.getElementById('go-back');
-const lightThemeBtn = document.getElementById('light-theme');
-const darkThemeBtn = document.getElementById('dark-theme');
-const systemThemeBtn = document.getElementById('system-theme');
 
-const testUserLoggedIn = document.getElementById('test-user-logged-in');
+// TODO Local host kullanarak göz kırpma sorunu çözülecek.
+//*****************************************************************************/
+const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
-if (testUserLoggedIn)
-  testUserLoggedIn.addEventListener('click', () => {
-    isUserLoggedIn();
-  });
-/**
- * DATABASE
- * 'system', 'dark', 'light'
- *
- * Logged or not logged
- *
- * not logged in
- * web sitesi sistem düzenini işletsin.
- *
- */
+if (matchMedia.matches) document.documentElement.classList.add('dark');
+else document.documentElement.classList.remove('dark');
 
-/*
-window
-  .matchMedia('(prefers-color-scheme: dark)')
-  .addEventListener('change', (event) => {
-    // const newColorScheme = event.matches ? "dark" : "light";
-    if (event.matches) document.documentElement.classList.add('dark');
-    else document.documentElement.classList.remove('dark');
-  });
-*/
-// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-/*document.documentElement.classList.toggle(
-  'dark',
-  localStorage.theme === 'dark' ||
-    (!('theme' in localStorage) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches),
-);*/
-// Whenever the user explicitly chooses light mode
-// localStorage.theme = 'light';
-// Whenever the user explicitly chooses dark mode
-// localStorage.theme = 'dark';
-// Whenever the user explicitly chooses to respect the OS preference
-// localStorage.removeItem("theme");
+const themeSwitchFn = (event) => {
+  if (event.matches) document.documentElement.classList.add('dark');
+  else document.documentElement.classList.remove('dark');
+};
 
-// DELEGATION
-/*
-if (lightThemeBtn)
-  lightThemeBtn.addEventListener('click', () => {
-    document.documentElement.classList.remove('dark');
-  });
+matchMedia.addEventListener('change', themeSwitchFn);
 
-if (darkThemeBtn)
-  darkThemeBtn.addEventListener('click', () => {
-    document.documentElement.classList.add('dark');
-  });
+//* Immediately Invoked Function
+(async () => {
+  const { isUserLoggedIn, userTheme } = await getUserLoginThemeInfo();
+  // console.log(`User is logged: ${isUserLoggedIn}. User Theme: ${userTheme}`);
 
-if (systemThemeBtn)
-  systemThemeBtn.addEventListener('click', () => {
-    console.log('System Theme');
-  });
-*/
+  if (isUserLoggedIn) {
+    matchMedia.removeEventListener('change', themeSwitchFn);
+
+    if (userTheme === 'light')
+      document.documentElement.classList.remove('dark');
+    if (userTheme === 'dark') document.documentElement.classList.add('dark');
+    if (userTheme === 'system') {
+      if (matchMedia.matches) document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+      matchMedia.addEventListener('change', themeSwitchFn);
+    }
+  }
+})();
+//*****************************************************************************/
 
 if (backToPreviousPageButton)
   backToPreviousPageButton.addEventListener('click', () => {

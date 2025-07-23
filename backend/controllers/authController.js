@@ -128,7 +128,10 @@ exports.isLoggedIn = async (req, res, next) => {
       );
 
       // 2) Check if user still exists
-      const currentUser = await User.findById(decoded.id);
+      const currentUser = await User.findById(decoded.id).select(
+        '-__v -createdAt -updatedAt -about',
+      );
+
       if (!currentUser) {
         return next();
       }

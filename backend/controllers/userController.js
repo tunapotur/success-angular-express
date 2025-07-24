@@ -32,18 +32,6 @@ exports.getUserSimpleInfos = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getUserLoginThemeInfo = catchAsync(async (req, res, next) => {
-  const isUserLoggedIn = res.locals.user ? true : false;
-  const userTheme = isUserLoggedIn ? res.locals.user.theme : undefined;
-
-  res.status(200).json({
-    status: 'success',
-    date: new Date().toLocaleString(),
-    isUserLoggedIn,
-    userTheme,
-  });
-});
-
 exports.updateMe = catchAsync(async (req, res, next) => {
   // 1) Create error if user POSTs password data
   if (req.body.password || req.body.passwordConfirm) {

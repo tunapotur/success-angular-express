@@ -7,7 +7,6 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-amber-600: oklch(66.6% 0.179 58.318);
     --color-sky-600: oklch(58.8% 0.158 241.966);
     --color-blue-50: oklch(97% 0.014 254.604);
     --color-indigo-50: oklch(96.2% 0.018 272.314);
@@ -217,12 +216,6 @@
   .sticky {
     position: sticky;
   }
-  .m-6 {
-    margin: calc(var(--spacing) * 6);
-  }
-  .m-12 {
-    margin: calc(var(--spacing) * 12);
-  }
   .mx-1 {
     margin-inline: calc(var(--spacing) * 1);
   }
@@ -240,12 +233,6 @@
   }
   .flex {
     display: flex;
-  }
-  .inline {
-    display: inline;
-  }
-  .flex-col {
-    flex-direction: column;
   }
   .flex-row {
     flex-direction: row;
@@ -268,14 +255,6 @@
   .text-center {
     text-align: center;
   }
-  .text-2xl {
-    font-size: var(--text-2xl);
-    line-height: var(--tw-leading, var(--text-2xl--line-height));
-  }
-  .text-3xl {
-    font-size: var(--text-3xl);
-    line-height: var(--tw-leading, var(--text-3xl--line-height));
-  }
   .text-lg {
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
@@ -287,9 +266,6 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
-  }
-  .text-amber-600 {
-    color: var(--color-amber-600);
   }
   .text-blue-50 {
     color: var(--color-blue-50);

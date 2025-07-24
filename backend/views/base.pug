@@ -1,5 +1,7 @@
+- const userTheme = user ? user.theme : "";
+
 doctype html 
-html
+html(class=`${userTheme}`)
   head
     block head
         meta(charset='UTF-8')

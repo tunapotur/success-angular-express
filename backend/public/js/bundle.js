@@ -10747,7 +10747,7 @@
   });
 
   // public/js/login.js
-  var login, logout, getUserLoginThemeInfo;
+  var login, logout;
   var init_login = __esm({
     "public/js/login.js"() {
       init_axios2();
@@ -10789,22 +10789,6 @@
           showAlert("error", "Error logging out! Try again.");
         }
       };
-      getUserLoginThemeInfo = async () => {
-        try {
-          const res = await axios_default({
-            method: "GET",
-            url: "http://localhost:3333/api/v1/users/user-login-theme-info"
-          });
-          if (res.data.status === "success")
-            return {
-              isUserLoggedIn: res.data.isUserLoggedIn,
-              userTheme: res.data.userTheme
-            };
-        } catch (err) {
-          console.log(err.response);
-          showAlert("error", "Checking user logged status error");
-        }
-      };
     }
   });
 
@@ -10843,27 +10827,7 @@
       var userDataForm = document.querySelector(".form-user-data");
       var userPasswordForm = document.querySelector(".form-user-password");
       var backToPreviousPageButton = document.getElementById("go-back");
-      var matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
-      if (matchMedia.matches) document.documentElement.classList.add("dark");
-      else document.documentElement.classList.remove("dark");
-      var themeSwitchFn = (event) => {
-        if (event.matches) document.documentElement.classList.add("dark");
-        else document.documentElement.classList.remove("dark");
-      };
-      matchMedia.addEventListener("change", themeSwitchFn);
       (async () => {
-        const { isUserLoggedIn, userTheme } = await getUserLoginThemeInfo();
-        if (isUserLoggedIn) {
-          matchMedia.removeEventListener("change", themeSwitchFn);
-          if (userTheme === "light")
-            document.documentElement.classList.remove("dark");
-          if (userTheme === "dark") document.documentElement.classList.add("dark");
-          if (userTheme === "system") {
-            if (matchMedia.matches) document.documentElement.classList.add("dark");
-            else document.documentElement.classList.remove("dark");
-            matchMedia.addEventListener("change", themeSwitchFn);
-          }
-        }
       })();
       if (backToPreviousPageButton)
         backToPreviousPageButton.addEventListener("click", () => {

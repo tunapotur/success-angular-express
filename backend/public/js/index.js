@@ -1,6 +1,6 @@
 /* eslint-disable */
 import '@babel/polyfill';
-import { login, logout, getUserLoginThemeInfo } from './login';
+import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
 // import { lightMode, darkMode, systemMode } from './lightDarkMode';
 
@@ -11,38 +11,8 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const backToPreviousPageButton = document.getElementById('go-back');
 
-// TODO Local host kullanarak göz kırpma sorunu çözülecek.
 //*****************************************************************************/
-const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
-
-if (matchMedia.matches) document.documentElement.classList.add('dark');
-else document.documentElement.classList.remove('dark');
-
-const themeSwitchFn = (event) => {
-  if (event.matches) document.documentElement.classList.add('dark');
-  else document.documentElement.classList.remove('dark');
-};
-
-matchMedia.addEventListener('change', themeSwitchFn);
-
-//* Immediately Invoked Function
-(async () => {
-  const { isUserLoggedIn, userTheme } = await getUserLoginThemeInfo();
-  // console.log(`User is logged: ${isUserLoggedIn}. User Theme: ${userTheme}`);
-
-  if (isUserLoggedIn) {
-    matchMedia.removeEventListener('change', themeSwitchFn);
-
-    if (userTheme === 'light')
-      document.documentElement.classList.remove('dark');
-    if (userTheme === 'dark') document.documentElement.classList.add('dark');
-    if (userTheme === 'system') {
-      if (matchMedia.matches) document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
-      matchMedia.addEventListener('change', themeSwitchFn);
-    }
-  }
-})();
+(async () => {})();
 //*****************************************************************************/
 
 if (backToPreviousPageButton)

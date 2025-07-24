@@ -7,7 +7,7 @@ const AppError = require('../utils/appError');
 /** Home Page */
 exports.home = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
-  const success_list = await Success.find();
+  const success_list = await Success.find().sort('-date');
 
   // 2) Build template
   // 3) Render that template using tour data from 1)
@@ -45,7 +45,7 @@ exports.successDetail = catchAsync(async (req, res, next) => {
 exports.userSuccessList = catchAsync(async (req, res) => {
   const userId = req.params.userId;
 
-  const userSuccessList = await Success.find({ user: userId });
+  const userSuccessList = await Success.find({ user: userId }).sort('-date');
 
   if (!userSuccessList) {
     return next(new AppError('There is no success with that id.', 404));

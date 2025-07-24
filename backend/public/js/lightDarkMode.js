@@ -1,15 +1,17 @@
-const lightThemeBtn = document.getElementById('light-theme');
-const darkThemeBtn = document.getElementById('dark-theme');
-const systemThemeBtn = document.getElementById('system-theme');
+export default lightDarkMode = () => {
+  const className = document.documentElement.className;
 
-export const lightMode = async () => {
-  console.log('Light Mode');
-};
+  let themeType;
+  if (className === 'system' || className === '') themeType = 'system';
+  if (className === 'light') themeType = 'light';
+  if (className === 'dark') themeType = 'dark';
 
-export const darkMode = async () => {
-  console.log('Dark Mode');
-};
+  if (themeType === 'system')
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+      document.documentElement.classList = 'dark';
+    else document.documentElement.classList = '';
 
-export const systemMode = async () => {
-  console.log('System Mode');
+  if (themeType === 'light') document.documentElement.classList = '';
+
+  if (themeType === 'dark') document.documentElement.classList = 'dark';
 };

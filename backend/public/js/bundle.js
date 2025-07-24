@@ -10816,19 +10816,39 @@
     }
   });
 
+  // public/js/lightDarkMode.js
+  var lightDarkMode_default;
+  var init_lightDarkMode = __esm({
+    "public/js/lightDarkMode.js"() {
+      lightDarkMode_default = lightDarkMode = () => {
+        const className = document.documentElement.className;
+        let themeType;
+        if (className === "system" || className === "") themeType = "system";
+        if (className === "light") themeType = "light";
+        if (className === "dark") themeType = "dark";
+        if (themeType === "system")
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+            document.documentElement.classList = "dark";
+          else document.documentElement.classList = "";
+        if (themeType === "light") document.documentElement.classList = "";
+        if (themeType === "dark") document.documentElement.classList = "dark";
+      };
+    }
+  });
+
   // public/js/index.js
   var require_index = __commonJS({
     "public/js/index.js"() {
       init_lib();
       init_login();
       init_updateSettings();
+      init_lightDarkMode();
       var loginForm = document.querySelector(".form--login");
       var logOutBtn = document.getElementById("logout");
       var userDataForm = document.querySelector(".form-user-data");
       var userPasswordForm = document.querySelector(".form-user-password");
       var backToPreviousPageButton = document.getElementById("go-back");
-      (async () => {
-      })();
+      lightDarkMode_default();
       if (backToPreviousPageButton)
         backToPreviousPageButton.addEventListener("click", () => {
           history.back();

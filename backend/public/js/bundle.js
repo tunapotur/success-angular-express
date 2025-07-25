@@ -10821,17 +10821,16 @@
   var init_lightDarkMode = __esm({
     "public/js/lightDarkMode.js"() {
       lightDarkMode_default = lightDarkMode = () => {
-        const className = document.documentElement.className;
-        let themeType;
-        if (className === "system" || className === "") themeType = "system";
-        if (className === "light") themeType = "light";
-        if (className === "dark") themeType = "dark";
-        if (themeType === "system")
-          if (window.matchMedia("(prefers-color-scheme: dark)").matches)
-            document.documentElement.classList = "dark";
-          else document.documentElement.classList = "";
-        if (themeType === "light") document.documentElement.classList = "";
-        if (themeType === "dark") document.documentElement.classList = "dark";
+        const pageTheme = document.documentElement.dataset.theme;
+        const systemDarkTheme = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        const classList = document.documentElement.classList;
+        if (pageTheme === "system" || pageTheme === "")
+          if (systemDarkTheme) classList.add("dark");
+          else classList.remove("dark");
+        if (pageTheme === "light") classList.remove("dark");
+        if (pageTheme === "dark") classList.add("dark");
       };
     }
   });
@@ -10848,6 +10847,7 @@
       var userDataForm = document.querySelector(".form-user-data");
       var userPasswordForm = document.querySelector(".form-user-password");
       var backToPreviousPageButton = document.getElementById("go-back");
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", lightDarkMode_default);
       lightDarkMode_default();
       if (backToPreviousPageButton)
         backToPreviousPageButton.addEventListener("click", () => {

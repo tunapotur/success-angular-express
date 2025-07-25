@@ -1,7 +1,7 @@
 - const userTheme = user ? user.theme:"";
 
 doctype html 
-html(class=`${userTheme}`)
+html(data-theme=`${userTheme}`)
   head
     block head
         meta(charset='UTF-8')

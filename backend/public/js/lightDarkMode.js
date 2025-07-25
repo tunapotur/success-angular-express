@@ -1,17 +1,15 @@
 export default lightDarkMode = () => {
-  const className = document.documentElement.className;
+  const pageTheme = document.documentElement.dataset.theme;
+  const systemDarkTheme = window.matchMedia(
+    '(prefers-color-scheme: dark)',
+  ).matches;
+  const classList = document.documentElement.classList;
 
-  let themeType;
-  if (className === 'system' || className === '') themeType = 'system';
-  if (className === 'light') themeType = 'light';
-  if (className === 'dark') themeType = 'dark';
+  if (pageTheme === 'system' || pageTheme === '')
+    if (systemDarkTheme) classList.add('dark');
+    else classList.remove('dark');
 
-  if (themeType === 'system')
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches)
-      document.documentElement.classList = 'dark';
-    else document.documentElement.classList = '';
+  if (pageTheme === 'light') classList.remove('dark');
 
-  if (themeType === 'light') document.documentElement.classList = '';
-
-  if (themeType === 'dark') document.documentElement.classList = 'dark';
+  if (pageTheme === 'dark') classList.add('dark');
 };

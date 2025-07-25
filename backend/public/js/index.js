@@ -11,6 +11,10 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const backToPreviousPageButton = document.getElementById('go-back');
 
+window
+  .matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', lightDarkMode);
+
 lightDarkMode();
 
 if (backToPreviousPageButton)

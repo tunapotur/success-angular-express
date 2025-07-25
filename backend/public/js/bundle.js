@@ -10816,11 +10816,11 @@
     }
   });
 
-  // public/js/lightDarkMode.js
-  var lightDarkMode_default;
-  var init_lightDarkMode = __esm({
-    "public/js/lightDarkMode.js"() {
-      lightDarkMode_default = lightDarkMode = () => {
+  // public/js/darkMode.js
+  var darkMode_default;
+  var init_darkMode = __esm({
+    "public/js/darkMode.js"() {
+      darkMode_default = darkMode = () => {
         const pageTheme = document.documentElement.dataset.theme;
         const systemDarkTheme = window.matchMedia(
           "(prefers-color-scheme: dark)"
@@ -10841,14 +10841,14 @@
       init_lib();
       init_login();
       init_updateSettings();
-      init_lightDarkMode();
+      init_darkMode();
       var loginForm = document.querySelector(".form--login");
       var logOutBtn = document.getElementById("logout");
       var userDataForm = document.querySelector(".form-user-data");
       var userPasswordForm = document.querySelector(".form-user-password");
       var backToPreviousPageButton = document.getElementById("go-back");
-      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", lightDarkMode_default);
-      lightDarkMode_default();
+      darkMode_default();
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", darkMode_default);
       if (backToPreviousPageButton)
         backToPreviousPageButton.addEventListener("click", () => {
           history.back();

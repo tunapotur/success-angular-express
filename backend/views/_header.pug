@@ -7,12 +7,6 @@ header.header-dock.header-dock--color.header
     h1.header__text SUCCESS
 
   if user
-    //- TODO Burası silinecek
-    div(class="mx-1 text-center text-lg font-semibold text-blue-50")
-      h1(class="flex flex-row justify-center")
-        span= `Theme:`
-        span(class="font-bold underline")= `${user.theme.toUpperCase()}`
-    
     a(href="/user-edit")
       svg.header__icon 
         use(xlink:href="../img/icons.svg#icon-user")

@@ -2,7 +2,7 @@
 import '@babel/polyfill';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
-import lightDarkMode from './lightDarkMode';
+import darkMode from './darkMode';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -11,11 +11,12 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const backToPreviousPageButton = document.getElementById('go-back');
 
+// Dark Mode Operations
+darkMode();
+
 window
   .matchMedia('(prefers-color-scheme: dark)')
-  .addEventListener('change', lightDarkMode);
-
-lightDarkMode();
+  .addEventListener('change', darkMode);
 
 if (backToPreviousPageButton)
   backToPreviousPageButton.addEventListener('click', () => {

@@ -1,4 +1,4 @@
-export default lightDarkMode = () => {
+export default darkMode = () => {
   const pageTheme = document.documentElement.dataset.theme;
   const systemDarkTheme = window.matchMedia(
     '(prefers-color-scheme: dark)',

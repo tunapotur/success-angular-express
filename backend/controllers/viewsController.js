@@ -45,6 +45,7 @@ exports.successDetail = catchAsync(async (req, res, next) => {
 exports.userSuccessList = catchAsync(async (req, res) => {
   const userId = req.params.userId;
 
+  const successUserInfo = await User.findById(userId).select('name surname');
   const userSuccessList = await Success.find({ user: userId }).sort('-date');
 
   if (!userSuccessList) {
@@ -55,6 +56,7 @@ exports.userSuccessList = catchAsync(async (req, res) => {
     title: 'User Success List',
     userId,
     user: res.locals.user,
+    successUserName: `${successUserInfo.name} ${successUserInfo.surname}`,
     userSuccessList,
   });
 });

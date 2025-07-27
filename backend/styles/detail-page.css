@@ -19,7 +19,7 @@
     }
 
     .detail-text {
-      @apply mx-1 mt-5 mb-6 text-justify indent-4 text-lg;
+      @apply p-4 text-justify indent-4 text-lg;
     }
   }
 }

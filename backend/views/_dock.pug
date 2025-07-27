@@ -2,12 +2,12 @@
   const link = user ? "/add-success" : "/login";
   
 .header-dock.header-dock--color.header.dock
-  div(class="justify-self-start")
+  div(class="justify-self-start" title="Go Back")
     if url !=="/"
       svg.dock__icon(id="go-back")
         use(xlink:href="../img/icons.svg#icon-arrow-thick-left")
 
-  div(class="justify-self-center")
+  div(class="justify-self-center" title="Add Success")
     if url!=="/add-success"
       a(href=`${link}`)
         svg.dock__icon 

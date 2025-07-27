@@ -7,8 +7,9 @@ block content
   p= user.surname 
   p= user.email 
   p= user.theme
+  p= user.language
 
-  div(class="flex flex-row gap-6 mt-6 justify-between")
+  div(class="flex flex-row gap-6 mt-6 justify-evenly")
     a(href=`/${user._id}/user-success-list`) 
       svg.page-icon
         use(xlink:href="../img/icons.svg#icon-list-ul-solid")
@@ -16,14 +17,5 @@ block content
     svg.page-icon(id="logout")
       use(xlink:href="../img/icons.svg#icon-log-out")
 
-    svg.page-icon(id="test-user-logged-in")
-      use(xlink:href="../img/icons.svg#icon-circle-plus-solid")
 
-    svg.page-icon(id="light-theme")
-      use(xlink:href="../img/icons.svg#icon-sun-solid")
-    
-    svg.page-icon(id="dark-theme")
-      use(xlink:href="../img/icons.svg#icon-moon-solid")
 
-    svg.page-icon(id="system-theme")
-      use(xlink:href="../img/icons.svg#icon-gears")

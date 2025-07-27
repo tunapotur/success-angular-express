@@ -1,6 +1,7 @@
 const express = require('express');
 const viewsController = require('../controllers/viewsController');
 const authController = require('../controllers/authController');
+// const { changeLanguage } = require('../controllers/languageController');
 
 const router = express.Router();
 
@@ -20,7 +21,6 @@ router.get('/:userId/user-success-list', viewsController.userSuccessList);
 /** User Profile */
 router.get('/:userId/user-profile', viewsController.userProfile);
 
-// TODO hatalı işlemler için web sayfası düzeni oturtulacak
 // TODO get komutu put, add, delete şeklinde değiştirilecek
 
 //*Client Side Rendering

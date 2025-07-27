@@ -1,0 +1,35 @@
+{
+  "home": {
+    "title": "Success'e Hoş Geldiniz"
+  },
+  "success-detail": {
+    "title": "Success Detay"
+  },
+  "user-success-list": {
+    "title": "Kullanıcı Success Listesi",
+    "page-header": "{{userName}} Success Listesi",
+    "no-success": "Bu kullanıcıya ait henüz herhangi bir success kaydı yok!"
+  },
+  "user-profile": {
+    "title": "Kullanıcı Profili",
+    "page-header": "{{userName}} Profil Sayfası"
+  },
+  "login": {
+    "title": "Hesabınıza giriş yapınız",
+    "error": "Kullanıcı giriş yaptığı için {{page}} sayfasına giriş yapamazsınız!"
+  },
+  "add-success": {
+    "title": "Success Ekle"
+  },
+  "edit-success": {
+    "title": "Success Düzenle"
+  },
+  "user-edit": {
+    "title": "Kullanıcı Düzenle"
+  },
+  "icons": {
+    "login": "Giriş",
+    "addSuccess": "Success Ekle",
+    "userEdit": "Kullanıcı Düzenle"
+  }
+}

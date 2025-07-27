@@ -3,12 +3,12 @@ include _success-card
 
 block content
   if userSuccessList.length !== 0
-    h1.page-header(class="mt-4 mb-8")= `${successUserName} Success List`
+    h1.page-header(class="mt-4 mb-8 p-4")= pageHeader
     .success-list
       if userSuccessList.length !== 0
         each success in userSuccessList
           +success-card(success)
   else
-    h1.page-header(class="mt-4 mb-8")
-      div= successUserName
-      div(class="text-orange-600 mt-6")= `The user doesn't have any success entries!`
+    h1.page-header(class="mt-4 mb-8 p-4")
+      div= pageHeader
+      div(class="text-orange-600 mt-6 p-4")= noSuccess

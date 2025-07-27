@@ -23,6 +23,7 @@ const createSendToken = (user, statusCode, res) => {
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res.cookie('jwt', token, cookieOptions);
+  if (user.language !== 'system') res.cookie('i18next', user.language);
 
   // Remove password from output
   user.password = undefined;
@@ -41,6 +42,9 @@ exports.signup = catchAsync(async (req, res, next) => {
     name: req.body.name,
     surname: req.body.surname,
     email: req.body.email,
+    about: req.body.about,
+    theme: req.body.theme,
+    language: req.body.language,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
   });
@@ -71,6 +75,7 @@ exports.logout = (req, res) => {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
   });
+  res.clearCookie('i18next');
   res.status(200).json({ status: 'success' });
 };
 

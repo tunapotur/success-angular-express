@@ -1,7 +1,8 @@
-- const userTheme = user ? user.theme:"";
+- const userTheme = user ? user.theme:"system";
+- const userLanguage = user ? user.language:"system";
 
 doctype html 
-html(data-theme=`${userTheme}`)
+html(data-theme=`${userTheme}` data-language=`${userLanguage}`)
   head
     block head
         meta(charset='UTF-8')

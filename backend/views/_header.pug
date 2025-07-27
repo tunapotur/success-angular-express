@@ -1,17 +1,17 @@
 header.header-dock.header-dock--color.header
-  a(href='/')
+  a(href='/' alt="Success" title="Success")
     svg.header__logo
       use(xlink:href="../img/icons.svg#icon-goal-skeleton")
   
-  a(href='/')
+  a(href='/' title="Success")
     h1.header__text SUCCESS
 
   if user
-    a(href="/user-edit")
+    a(href="/user-edit" title=`User Edit`)
       svg.header__icon 
         use(xlink:href="../img/icons.svg#icon-user")
 
   else
-    a(href="/login")
+    a(href="/login" title=`Login`)
       svg.header__icon 
         use(xlink:href="../img/icons.svg#icon-arrow-right-to-bracket")

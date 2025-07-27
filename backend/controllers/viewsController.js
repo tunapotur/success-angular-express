@@ -3,6 +3,9 @@ const User = require('./../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
+//TODO tüm sayfalara veri göndermenin bir yolunu bulmuş olabilirim. Buna çalış.
+// https://stackoverflow.com/questions/47051103/how-to-pass-a-dynamic-variable-in-expressjs-to-all-pug-templates
+
 //SSR
 /** Home Page */
 exports.home = catchAsync(async (req, res, next) => {
@@ -12,7 +15,7 @@ exports.home = catchAsync(async (req, res, next) => {
   // 2) Build template
   // 3) Render that template using tour data from 1)
   res.status(200).render('home', {
-    title: 'Welcome Success',
+    title: req.t('home.title'),
     success_list,
     user: res.locals.user,
     url: req.originalUrl,
@@ -34,7 +37,7 @@ exports.successDetail = catchAsync(async (req, res, next) => {
     user && success.user._id.toString() === user._id.toString() ? true : false;
 
   res.status(200).render('success-detail', {
-    title: 'Success Detail',
+    title: req.t('success-detail.title'),
     user,
     success,
     owner,
@@ -53,10 +56,13 @@ exports.userSuccessList = catchAsync(async (req, res) => {
   }
 
   res.status(200).render('user-success-list', {
-    title: 'User Success List',
+    title: req.t('user-success-list.title'),
+    pageHeader: req.t('user-success-list.page-header', {
+      userName: `${successUserInfo.name} ${successUserInfo.surname}`,
+    }),
+    noSuccess: req.t('user-success-list.no-success'),
     userId,
     user: res.locals.user,
-    successUserName: `${successUserInfo.name} ${successUserInfo.surname}`,
     userSuccessList,
   });
 });
@@ -73,7 +79,10 @@ exports.userProfile = catchAsync(async (req, res) => {
   }
 
   res.status(200).render('user-profile', {
-    title: 'User Profile',
+    title: req.t('user-profile.title'),
+    pageHeader: req.t('user-profile.page-header', {
+      userName: `${userInfo.name} ${userInfo.surname}`,
+    }),
     userInfo,
     user: res.locals.user,
   });
@@ -87,13 +96,13 @@ exports.getLoginForm = (req, res, next) => {
   if (user)
     return next(
       new AppError(
-        `Kullanıcı giriş yaptığı için ${req.originalUrl.substring(1)} sayfasına giriş yapamazsınız!`,
+        req.t('login.error', { page: req.originalUrl.substring(1) }),
         401,
       ),
     );
 
   res.status(200).render('login', {
-    title: 'Log into your account',
+    title: req.t('login.title'),
     user,
   });
 };
@@ -101,7 +110,7 @@ exports.getLoginForm = (req, res, next) => {
 /** Add Success */
 exports.addSuccess = (req, res) => {
   res.status(200).render('add-success', {
-    title: 'Add Success',
+    title: req.t('add-success.title'),
     url: req.originalUrl,
     user: res.locals.user,
   });
@@ -110,7 +119,7 @@ exports.addSuccess = (req, res) => {
 /** Edit Success */
 exports.editSuccess = (req, res) => {
   res.status(200).render('edit-success', {
-    title: 'Edit Success',
+    title: req.t('edit-success.title'),
     user: res.locals.user,
   });
 };
@@ -118,7 +127,7 @@ exports.editSuccess = (req, res) => {
 /** User Edit */
 exports.userEdit = (req, res) => {
   res.status(200).render('user-edit', {
-    title: 'User Edit',
+    title: req.t('user-edit.title'),
     user: res.locals.user,
   });
 };

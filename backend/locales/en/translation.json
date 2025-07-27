@@ -1,0 +1,35 @@
+{
+  "home": {
+    "title": "Welcome Success"
+  },
+  "success-detail": {
+    "title": "Success Detail"
+  },
+  "user-success-list": {
+    "title": "User Success List",
+    "page-header": "{{userName}} Success Listesi",
+    "no-success": "The user doesn't have any success entries yet!"
+  },
+  "user-profile": {
+    "title": "User Profile",
+    "page-header": "{{userName}} Profile Page"
+  },
+  "login": {
+    "title": "Log into your account",
+    "error": "You cannot access the {{page}} page because you are logged in!"
+  },
+  "add-success": {
+    "title": "Add Success"
+  },
+  "edit-success": {
+    "title": "Edit Success"
+  },
+  "user-edit": {
+    "title": "User Edit"
+  },
+  "icons": {
+    "login": "Giriş",
+    "addSuccess": "Success Ekle",
+    "userEdit": "User Edit"
+  }
+}

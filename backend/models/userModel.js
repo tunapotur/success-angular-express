@@ -60,6 +60,11 @@ const userSchema = new Schema(
       enum: ['system', 'dark', 'light'],
       default: 'system',
     },
+    language: {
+      type: String,
+      enum: ['en', 'tr-TR', 'system'],
+      default: 'system',
+    },
     passwordChangedAt: Date,
     active: {
       type: Boolean,

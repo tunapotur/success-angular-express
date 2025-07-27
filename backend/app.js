@@ -7,8 +7,15 @@ const helmet = require('helmet');
 const expressMongoSanitize = require('@exortek/express-mongo-sanitize');
 const { xss } = require('express-xss-sanitizer');
 const hpp = require('hpp');
-var cors = require('cors');
+const cors = require('cors');
 const moment = require('moment');
+
+// Localization
+/* npm install i18next i18next-http-middleware i18next-fs-backend */
+/* https://lokalise.com/blog/node-js-i18n-express-js-localization/ */
+const i18next = require('i18next');
+const Backend = require('i18next-fs-backend');
+const middleware = require('i18next-http-middleware');
 
 //Error management imports
 const AppError = require('./utils/appError');
@@ -22,6 +29,25 @@ const viewRouter = require('./routes/viewRoutes');
 
 // Controller
 const authController = require('./controllers/authController');
+
+// Language Middleware
+const { setLanguage } = require('./middleware/setLanguageMiddleware');
+
+// Language Configuration
+i18next
+  .use(Backend) // Connects the file system backend
+  .use(middleware.LanguageDetector) // Enables automatic language detection
+  .init({
+    backend: {
+      loadPath: path.join(process.cwd(), '/locales', '{{lng}}', '{{ns}}.json'), // Path to translation files
+    },
+    detection: {
+      order: ['querystring', 'cookie'], // Priority: URL query string first, then cookies Query string sample: ?lng=en
+      caches: ['cookie'], // Cache detected language in cookies
+    },
+    fallbackLng: ['tr-TR', 'en'], // Default language when no language is detected
+    preload: ['tr-TR', 'en'],
+  });
 
 const app = express();
 
@@ -74,6 +100,10 @@ app.use(
     whitelist: [],
   }),
 );
+
+// Language
+app.use(middleware.handle(i18next));
+app.use(setLanguage);
 
 // Test middleware
 // Those routers contain controllers to check user requests

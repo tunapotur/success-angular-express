@@ -11,7 +11,6 @@ const cors = require('cors');
 const moment = require('moment');
 
 // Localization
-/* npm install i18next i18next-http-middleware i18next-fs-backend */
 /* https://lokalise.com/blog/node-js-i18n-express-js-localization/ */
 const i18next = require('i18next');
 const FilesystemBackend = require('i18next-fs-backend');

@@ -231,14 +231,8 @@
   .flex {
     display: flex;
   }
-  .inline {
-    display: inline;
-  }
   .flex-row {
     flex-direction: row;
-  }
-  .justify-between {
-    justify-content: space-between;
   }
   .justify-evenly {
     justify-content: space-evenly;

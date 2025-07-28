@@ -28,8 +28,9 @@
     "title": "User Edit"
   },
   "icons": {
-    "login": "Giriş",
-    "addSuccess": "Success Ekle",
-    "userEdit": "User Edit"
+    "login": "Login",
+    "addSuccess": "Add Success",
+    "userEdit": "User Edit",
+    "goBack": "Go Back"
   }
 }

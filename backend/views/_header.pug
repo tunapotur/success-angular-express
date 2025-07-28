@@ -7,11 +7,11 @@ header.header-dock.header-dock--color.header
     h1.header__text SUCCESS
 
   if user
-    a(href="/user-edit" title=`User Edit`)
+    a(href="/user-edit" title=`${iconText_userEdit}`)
       svg.header__icon 
         use(xlink:href="../img/icons.svg#icon-user")
 
   else
-    a(href="/login" title=`Login`)
+    a(href="/login" title=`${iconText_login}`)
       svg.header__icon 
         use(xlink:href="../img/icons.svg#icon-arrow-right-to-bracket")

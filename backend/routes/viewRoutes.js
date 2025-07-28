@@ -16,6 +16,12 @@ router.use((req, res, next) => {
   res.locals.iconText_addSuccess = req.t('icons.addSuccess');
   res.locals.iconText_userEdit = req.t('icons.userEdit');
   res.locals.iconText_goBack = req.t('icons.goBack');
+
+  // Page Language Operations
+  const user = res.locals.user;
+  if (user && user.language !== 'system') res.cookie('i18next', user.language);
+  else res.cookie('i18next', req.headers['accept-language']);
+
   next();
 });
 

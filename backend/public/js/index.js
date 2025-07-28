@@ -2,7 +2,8 @@
 import '@babel/polyfill';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
-import gelAllCookies from './gelAllCookies';
+import darkMode from './darkMode';
+// import gelAllCookies from './gelAllCookies';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -12,23 +13,10 @@ const userPasswordForm = document.querySelector('.form-user-password');
 const backToPreviousPageButton = document.getElementById('go-back');
 
 // Dark Mode Operations
-document.documentElement.classList.toggle(
-  'dark',
-  gelAllCookies().theme === 'dark' ||
-    (!gelAllCookies().theme &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches),
-);
-
+darkMode();
 window
   .matchMedia('(prefers-color-scheme: dark)')
-  .addEventListener('change', (e) => {
-    document.documentElement.classList.toggle(
-      'dark',
-      gelAllCookies().theme === 'dark' ||
-        (!gelAllCookies().theme &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches),
-    );
-  });
+  .addEventListener('change', darkMode);
 
 if (backToPreviousPageButton)
   backToPreviousPageButton.addEventListener('click', () => {

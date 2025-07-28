@@ -10816,14 +10816,19 @@
     }
   });
 
-  // public/js/gelAllCookies.js
-  var gelAllCookies_default;
-  var init_gelAllCookies = __esm({
-    "public/js/gelAllCookies.js"() {
-      gelAllCookies_default = getAllCookies = () => document.cookie.split(";").reduce(
-        (ac, str) => Object.assign(ac, { [str.split("=")[0].trim()]: str.split("=")[1] }),
-        {}
-      );
+  // public/js/darkMode.js
+  var darkMode_default;
+  var init_darkMode = __esm({
+    "public/js/darkMode.js"() {
+      darkMode_default = darkMode = () => {
+        const pageDatasetTheme = document.documentElement.dataset.theme;
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const classList = document.documentElement.classList;
+        if (pageDatasetTheme === "system" || pageDatasetTheme === "")
+          systemTheme ? classList.add("dark") : classList.remove("dark");
+        if (pageDatasetTheme === "light") classList.remove("dark");
+        if (pageDatasetTheme === "dark") classList.add("dark");
+      };
     }
   });
 
@@ -10833,22 +10838,14 @@
       init_lib();
       init_login();
       init_updateSettings();
-      init_gelAllCookies();
+      init_darkMode();
       var loginForm = document.querySelector(".form--login");
       var logOutBtn = document.getElementById("logout");
       var userDataForm = document.querySelector(".form-user-data");
       var userPasswordForm = document.querySelector(".form-user-password");
       var backToPreviousPageButton = document.getElementById("go-back");
-      document.documentElement.classList.toggle(
-        "dark",
-        gelAllCookies_default().theme === "dark" || !gelAllCookies_default().theme && window.matchMedia("(prefers-color-scheme: dark)").matches
-      );
-      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-        document.documentElement.classList.toggle(
-          "dark",
-          gelAllCookies_default().theme === "dark" || !gelAllCookies_default().theme && window.matchMedia("(prefers-color-scheme: dark)").matches
-        );
-      });
+      darkMode_default();
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", darkMode_default);
       if (backToPreviousPageButton)
         backToPreviousPageButton.addEventListener("click", () => {
           history.back();

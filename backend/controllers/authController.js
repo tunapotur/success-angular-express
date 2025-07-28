@@ -23,10 +23,7 @@ const createSendToken = (user, statusCode, res) => {
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res.cookie('jwt', token, cookieOptions);
-  if (user.language !== 'system') {
-    res.cookie('i18next', user.language);
-    res.cookie('theme', user.theme);
-  }
+  if (user.language !== 'system') res.cookie('i18next', user.language);
 
   // Remove password from output
   user.password = undefined;
@@ -79,7 +76,6 @@ exports.logout = (req, res) => {
     httpOnly: true,
   });
   res.clearCookie('i18next');
-  res.clearCookie('theme');
   res.status(200).json({ status: 'success' });
 };
 

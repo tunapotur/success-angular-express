@@ -14,8 +14,6 @@ export const login = async (email, password) => {
     });
 
     if (res.data.status === 'success') {
-      // localStorage.setItem('theme', res.data.data.user.theme);
-
       showAlert('success', 'Logged in successfully!');
       window.setTimeout(() => {
         location.assign('/');
@@ -34,8 +32,6 @@ export const logout = async () => {
     });
 
     if (res.data.status === 'success') {
-      // localStorage.removeItem('theme');
-
       showAlert('success', 'Logged out successfully!');
       window.setTimeout(() => {
         location.assign('/');

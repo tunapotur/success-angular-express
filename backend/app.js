@@ -14,7 +14,7 @@ const moment = require('moment');
 /* npm install i18next i18next-http-middleware i18next-fs-backend */
 /* https://lokalise.com/blog/node-js-i18n-express-js-localization/ */
 const i18next = require('i18next');
-const Backend = require('i18next-fs-backend');
+const FilesystemBackend = require('i18next-fs-backend');
 const i18nextMiddleware = require('i18next-http-middleware');
 
 //Error management imports
@@ -35,8 +35,8 @@ const { setLanguage } = require('./middleware/setLanguageMiddleware');
 
 // Language Configuration
 i18next
-  .use(Backend) // Connects the file system backend
   .use(i18nextMiddleware.LanguageDetector) // Enables automatic language detection
+  .use(FilesystemBackend) // Connects the file system backend
   .init({
     backend: {
       loadPath: path.join(process.cwd(), '/locales', '{{lng}}', '{{ns}}.json'), // Path to translation files

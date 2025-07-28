@@ -17,8 +17,6 @@ exports.home = catchAsync(async (req, res, next) => {
   res.status(200).render('home', {
     title: req.t('home.title'),
     success_list,
-    user: res.locals.user,
-    url: req.originalUrl,
   });
 });
 
@@ -38,7 +36,6 @@ exports.successDetail = catchAsync(async (req, res, next) => {
 
   res.status(200).render('success-detail', {
     title: req.t('success-detail.title'),
-    user,
     success,
     owner,
   });
@@ -62,7 +59,6 @@ exports.userSuccessList = catchAsync(async (req, res) => {
     }),
     noSuccess: req.t('user-success-list.no-success'),
     userId,
-    user: res.locals.user,
     userSuccessList,
   });
 });
@@ -84,16 +80,13 @@ exports.userProfile = catchAsync(async (req, res) => {
       userName: `${userInfo.name} ${userInfo.surname}`,
     }),
     userInfo,
-    user: res.locals.user,
   });
 });
 
 //Client Side Rendering
 /** Login */
 exports.getLoginForm = (req, res, next) => {
-  const user = res.locals.user;
-
-  if (user)
+  if (res.locals.user)
     return next(
       new AppError(
         req.t('login.error', { page: req.originalUrl.substring(1) }),
@@ -103,7 +96,6 @@ exports.getLoginForm = (req, res, next) => {
 
   res.status(200).render('login', {
     title: req.t('login.title'),
-    user,
   });
 };
 
@@ -112,7 +104,6 @@ exports.addSuccess = (req, res) => {
   res.status(200).render('add-success', {
     title: req.t('add-success.title'),
     url: req.originalUrl,
-    user: res.locals.user,
   });
 };
 
@@ -120,7 +111,6 @@ exports.addSuccess = (req, res) => {
 exports.editSuccess = (req, res) => {
   res.status(200).render('edit-success', {
     title: req.t('edit-success.title'),
-    user: res.locals.user,
   });
 };
 
@@ -128,6 +118,5 @@ exports.editSuccess = (req, res) => {
 exports.userEdit = (req, res) => {
   res.status(200).render('user-edit', {
     title: req.t('user-edit.title'),
-    user: res.locals.user,
   });
 };

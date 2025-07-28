@@ -12,3 +12,8 @@ router.get('/test-translate', (req, res) => {
     cartMessage: req.t('cart_items', { count: cartItemCount }), // Display singular/plural based on count
   });
 });
+
+app.get('/', (req, res) => {
+  const browserLang = req.headers['accept-language'];
+  res.send(`Tarayıcı dili: ${browserLang}`);
+});

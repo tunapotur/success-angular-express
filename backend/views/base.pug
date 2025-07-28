@@ -1,8 +1,8 @@
-- const userTheme = user ? user.theme:"system";
+- const userTheme = user && user.theme==="dark" ? user.theme : "";
 
 doctype html
 //- TODO sayfa yenilemelerinde göz kırpma oluyor. Sorun front end js den kaynaklanıyor. Bu durumu backend ile çöz.
-html(data-theme=`${userTheme}`)
+html(class=`${userTheme}`)
   head
     block head
         meta(charset='UTF-8')

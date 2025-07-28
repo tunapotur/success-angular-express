@@ -3,9 +3,6 @@ const User = require('./../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
-//TODO tüm sayfalara veri göndermenin bir yolunu bulmuş olabilirim. Buna çalış.
-// https://stackoverflow.com/questions/47051103/how-to-pass-a-dynamic-variable-in-expressjs-to-all-pug-templates
-
 //SSR
 /** Home Page */
 exports.home = catchAsync(async (req, res, next) => {
